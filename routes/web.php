@@ -6,8 +6,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Dummy routes for links
-Route::get('/about', fn() => 'About Page')->name('about');
-Route::get('/contact', fn() => 'Contact Page')->name('contact');
+Route::get('/about', fn() => view('frontend.about'))->name('about');
+Route::get('/contact', fn() => view('frontend.contact'))->name('contact');
+Route::post('/contact', fn() => back()->with('success', 'Thank you! Your message has been sent successfully.'))->name('contact.store');
 Route::get('/products', fn() => 'Products')->name('products.index');
 Route::get('/products/{slug}', fn($slug) => "Category: $slug")->name('products.category');
 Route::get('/replacement-parts', fn() => 'Replacement Parts')->name('replacement-parts');

@@ -1,101 +1,172 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Contact Us | SRJ Heat Exchangers')
+@section('title', 'Contact Us | ' . App\Models\Setting::get('site_name', 'SRJ Heat Exchangers'))
 
 @section('content')
-<div class="page-header bg-dark text-white text-center py-5" style="padding: 100px 0; background: linear-gradient(rgba(10,22,40,0.9), rgba(10,22,40,0.9)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80'); background-size: cover;">
-    <div class="container">
-        <h1 class="text-white" style="font-size: 3.5rem;">Contact Us</h1>
+<!-- Page Header (Same Premium Theme as About Us) -->
+<div class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-[#0a1628]">
+    <!-- Abstract Background -->
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20 mix-blend-luminosity"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/90 to-red-900/40"></div>
+    
+    <!-- Floating particles/shapes -->
+    <div class="absolute top-1/4 right-10 w-64 h-64 bg-red-600 rounded-full blur-[120px] opacity-40 animate-[pulseGlow_4s_ease-in-out_infinite]"></div>
+    
+    <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center" data-aos="fade-up">
+        <span class="inline-block px-4 py-1 bg-white/10 backdrop-blur-md rounded-full text-red-400 font-bold tracking-[0.2em] uppercase text-xs mb-6 border border-white/10">Reach Out</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight font-['Rajdhani'] drop-shadow-2xl">
+            Let's <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Connect</span>
+        </h1>
+        
+        <div class="flex items-center justify-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-slate-300">
+            <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors flex items-center gap-2"><i class="fas fa-home"></i> Home</a>
+            <span class="text-slate-500">/</span>
+            <span class="text-white">Contact Us</span>
+        </div>
+    </div>
+    
+    <!-- Wave separator -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+        <svg class="relative block w-full h-[50px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,123.59,190.27,110.15,236.42,99.8,279.79,78.36,321.39,56.44Z" class="fill-slate-50"></path>
+        </svg>
     </div>
 </div>
 
-<section class="section">
-    <div class="container">
-        <div class="two-col" style="align-items: start;">
-            <!-- Contact Info -->
-            <div>
-                <span class="section-badge">GET IN TOUCH</span>
-                <h2 class="section-title">We're Here to Help</h2>
-                <p class="mb-4">Need technical support, a price quotation, or have questions about our products? Reach out to our engineering team.</p>
+<!-- Contact Section -->
+<section class="py-24 bg-slate-50 relative overflow-hidden">
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            
+            <!-- Left: Contact Form Card -->
+            <div class="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-8 lg:p-12 border border-slate-100 relative group hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-shadow duration-500" data-aos="fade-right">
+                <!-- Subtle top red bar -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-t-xl group-hover:h-2 transition-all duration-300"></div>
                 
-                <div class="contact-info-list mt-4">
-                    <div class="d-flex align-items-center mb-4" style="display: flex; gap: 20px; align-items: center; margin-bottom: 25px;">
-                        <div class="icon-box" style="width: 60px; height: 60px; background: rgba(232,93,47,0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="mb-1">Our Office</h4>
-                            <p class="text-gray m-0">{{ App\Models\Setting::get('address') }}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex align-items-center mb-4" style="display: flex; gap: 20px; align-items: center; margin-bottom: 25px;">
-                        <div class="icon-box" style="width: 60px; height: 60px; background: rgba(232,93,47,0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="mb-1">Call Us</h4>
-                            <p class="text-gray m-0">{{ App\Models\Setting::get('phone') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center" style="display: flex; gap: 20px; align-items: center;">
-                        <div class="icon-box" style="width: 60px; height: 60px; background: rgba(232,93,47,0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="mb-1">Email Us</h4>
-                            <p class="text-gray m-0">{{ App\Models\Setting::get('email') }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Form -->
-            <div class="card shadow-lg" style="padding: 40px;">
-                <h3 class="mb-4">Send an Enquiry</h3>
+                <h3 class="text-2xl font-bold text-[#0a1628] mb-8 text-center uppercase tracking-widest font-['Rajdhani']">Get In Touch</h3>
                 
                 @if(session('success'))
-                    <div style="padding: 15px; background: #d4edda; color: #155724; border-radius: 4px; margin-bottom: 20px;">
+                    <div class="bg-green-50 text-green-700 p-4 rounded-lg mb-6 border border-green-200">
                         {{ session('success') }}
                     </div>
                 @endif
                 
-                <form action="{{ route('contact.store') }}" method="POST">
+                <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                     @csrf
-                    <div class="grid grid-2" style="gap: 20px; margin-bottom: 20px;">
-                        <div>
-                            <input type="text" name="name" placeholder="Your Name *" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px;" value="{{ old('name') }}">
-                            @error('name')<span style="color:red; font-size:12px;">{{ $message }}</span>@enderror
-                        </div>
-                        <div>
-                            <input type="email" name="email" placeholder="Your Email *" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px;" value="{{ old('email') }}">
-                            @error('email')<span style="color:red; font-size:12px;">{{ $message }}</span>@enderror
-                        </div>
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-bold text-[#0a1628] mb-2">Name <span class="text-red-600">*</span></label>
+                        <input type="text" name="name" required class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-red-600/20 focus:border-red-600 outline-none transition-all text-sm shadow-inner" value="{{ old('name') }}">
                     </div>
                     
-                    <div class="grid grid-2" style="gap: 20px; margin-bottom: 20px;">
+                    <!-- Email and Phone -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <input type="text" name="phone" placeholder="Phone Number" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px;" value="{{ old('phone') }}">
+                            <label class="block text-sm font-bold text-[#0a1628] mb-2">Email Id <span class="text-red-600">*</span></label>
+                            <input type="email" name="email" required class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-red-600/20 focus:border-red-600 outline-none transition-all text-sm shadow-inner" value="{{ old('email') }}">
                         </div>
                         <div>
-                            <input type="text" name="company" placeholder="Company Name" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px;" value="{{ old('company') }}">
+                            <label class="block text-sm font-bold text-[#0a1628] mb-2">Phone Number <span class="text-red-600">*</span></label>
+                            <input type="tel" name="phone" required class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-red-600/20 focus:border-red-600 outline-none transition-all text-sm shadow-inner" value="{{ old('phone') }}">
                         </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <input type="text" name="subject" placeholder="Subject" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px;" value="{{ old('subject') }}">
                     </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <textarea name="message" rows="5" placeholder="Your Message *" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px; resize: vertical;">{{ old('message') }}</textarea>
-                        @error('message')<span style="color:red; font-size:12px;">{{ $message }}</span>@enderror
+                    <!-- Subject -->
+                    <div>
+                        <label class="block text-sm font-bold text-[#0a1628] mb-2">Subject <span class="text-red-600">*</span></label>
+                        <input type="text" name="subject" required class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-red-600/20 focus:border-red-600 outline-none transition-all text-sm shadow-inner" value="{{ old('subject') }}">
                     </div>
                     
-                    <button type="submit" class="btn btn-accent" style="width: 100%;">Send Message</button>
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-sm font-bold text-[#0a1628] mb-2">Message</label>
+                        <textarea name="message" rows="5" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-red-600/20 focus:border-red-600 outline-none transition-all text-sm resize-none shadow-inner">{{ old('message') }}</textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-[#bd3232] hover:bg-[#9a2727] text-white font-bold py-4 mt-2 flex items-center justify-center gap-2 transition-colors shadow-lg shadow-[#bd3232]/30 uppercase tracking-widest text-sm">
+                        Submit Now <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
                 </form>
             </div>
+            
+            <!-- Right: Contact Information -->
+            <div class="pt-4 lg:pt-8" data-aos="fade-left">
+                <!-- Abstract arrow graphic behind title -->
+                <div class="absolute -z-10 -ml-16 mt-2 opacity-10 hidden md:block">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+                
+                <h2 class="text-4xl lg:text-5xl font-black text-[#0a1628] mb-4 font-['Rajdhani']">
+                    Needs More <span class="text-[#bd3232]">Help?</span>
+                </h2>
+                <p class="text-slate-500 mb-12 text-lg font-light leading-relaxed max-w-md">
+                    Get expert support for heat exchangers, spare parts, and technical assistance.
+                </p>
+                
+                <div class="space-y-8">
+                    <!-- Corporate Office -->
+                    <div class="flex items-start gap-6 group cursor-pointer">
+                        <div class="w-[52px] h-[52px] shrink-0 bg-[#3b4c68] flex items-center justify-center text-white text-lg shadow-md group-hover:bg-[#bd3232] group-hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-bold text-[#0a1628] mb-1.5 group-hover:text-[#bd3232] transition-colors">Corporate Office Address</h4>
+                            <p class="text-slate-500 font-light text-[15px] leading-relaxed max-w-sm">{{ App\Models\Setting::get('address', 'A-1114, 11th Floor, I-Thum, A-40, Sector - 62, Noida - 201301') }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Factory Address -->
+                    <div class="flex items-start gap-6 group cursor-pointer">
+                        <div class="w-[52px] h-[52px] shrink-0 bg-[#3b4c68] flex items-center justify-center text-white text-lg shadow-md group-hover:bg-[#bd3232] group-hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-bold text-[#0a1628] mb-1.5 group-hover:text-[#bd3232] transition-colors">Factory Address</h4>
+                            <p class="text-slate-500 font-light text-[15px] leading-relaxed max-w-sm">{{ App\Models\Setting::get('factory_address', 'Plot No 139, Udhyog Vihar Ext, Ecotech-II, Greater Noida - 201305') }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Number -->
+                    <div class="flex items-start gap-6 group cursor-pointer">
+                        <div class="w-[52px] h-[52px] shrink-0 bg-[#3b4c68] flex items-center justify-center text-white text-lg shadow-md group-hover:bg-[#bd3232] group-hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-bold text-[#0a1628] mb-1.5 group-hover:text-[#bd3232] transition-colors">Contact Number</h4>
+                            <p class="text-slate-500 font-light text-[15px] leading-relaxed">{{ App\Models\Setting::get('phone', '+91- 9716115504 / 05') }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Landline -->
+                    <div class="flex items-start gap-6 group cursor-pointer">
+                        <div class="w-[52px] h-[52px] shrink-0 bg-[#3b4c68] flex items-center justify-center text-white text-lg shadow-md group-hover:bg-[#bd3232] group-hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-tty"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-bold text-[#0a1628] mb-1.5 group-hover:text-[#bd3232] transition-colors">Landline No</h4>
+                            <p class="text-slate-500 font-light text-[15px] leading-relaxed">01204533028</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="flex items-start gap-6 group cursor-pointer">
+                        <div class="w-[52px] h-[52px] shrink-0 bg-[#3b4c68] flex items-center justify-center text-white text-lg shadow-md group-hover:bg-[#bd3232] group-hover:-translate-y-1 transition-all duration-300">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-bold text-[#0a1628] mb-1.5 group-hover:text-[#bd3232] transition-colors">Email:</h4>
+                            <a href="mailto:{{ App\Models\Setting::get('email', 'info@srj.co.in') }}" class="text-slate-500 hover:text-[#bd3232] font-light text-[15px] leading-relaxed transition-colors">{{ App\Models\Setting::get('email', 'info@srj.co.in') }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
+</section>
+
+<!-- Full Width Map Section -->
+<section class="h-[500px] w-full relative z-10 bg-slate-200">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1386450650965!2d77.369796014407!3d28.625611191146747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5449fb0dbbb%3A0x86bd71358b5b5972!2sI-Thum!5e0!3m2!1sen!2sin!4v1683883733989!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="filter grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"></iframe>
 </section>
 @endsection

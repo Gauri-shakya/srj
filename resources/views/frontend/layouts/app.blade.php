@@ -22,14 +22,17 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Tailwind CSS CDN (For instant updates without npm run build) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     @stack('styles')
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-red-600 selection:text-white">
 
     <!-- Topbar -->
     <div class="topbar">
-        <div class="container topbar-inner">
+        <div class="w-full px-[5%] topbar-inner mx-auto flex justify-between items-center gap-4">
             <div class="topbar-left flex items-center gap-6">
                 <a href="mailto:{{ App\Models\Setting::get('email') }}" class="hover:text-red-400">
                     <i class="fas fa-envelope text-red-500"></i> {{ App\Models\Setting::get('email', 'info@srj.co.in') }}
@@ -50,13 +53,11 @@
 
     <!-- Header -->
     <header class="header">
-        <div class="container header-inner">
-            <div class="logo">
+        <div class="w-full px-[5%] header-inner mx-auto flex justify-between items-center gap-6 xl:gap-12">
+            <div class="logo shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white transform group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-red-600/30">
-                        <i class="fas fa-fire-alt text-xl"></i>
-                    </div>
-                    <h2 class="text-[#0a1628]">SRJ <span class="text-red-600">HEAT EXCHANGERS</span></h2>
+                    <!-- Website Logo Image -->
+                    <img src="{{ asset('logo.png') }}" alt="SRJ Heat Exchangers" class="h-8 md:h-12 object-contain">
                 </a>
             </div>
             <nav class="nav">
@@ -88,8 +89,8 @@
                     </li>
                 </ul>
             </nav>
-            <div class="header-action flex items-center gap-4">
-                <a href="{{ route('contact') }}" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 bg-red-600 rounded-full hover:bg-[#0a1628] hover:shadow-lg hover:-translate-y-0.5">
+            <div class="header-action flex items-center justify-end gap-4 shrink-0">
+                <a href="{{ route('contact') }}" class="hidden lg:inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-white transition-all duration-300 bg-red-600 rounded-full hover:bg-[#0a1628] hover:shadow-lg hover:-translate-y-0.5">
                     Get a Quote <i class="fas fa-arrow-right ml-2 text-xs"></i>
                 </a>
                 <button class="mobile-menu-btn"><i class="fas fa-bars-staggered"></i></button>
@@ -103,72 +104,96 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer border-t-[6px] border-red-600">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col pr-8">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white">
-                            <i class="fas fa-fire-alt"></i>
-                        </div>
-                        <h3 class="!mb-0 text-2xl font-black text-white">SRJ <span class="text-red-500">INDIA</span></h3>
+    <footer class="footer border-t-[4px] border-red-600 bg-[#0a1628] relative pt-16">
+        <!-- Dotted Map Background Effect -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-5 mix-blend-screen pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/95 to-transparent z-0"></div>
+        
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12">
+                
+                <!-- Col 1: About & Make In India (3 cols) -->
+                <div class="lg:col-span-3">
+                    <div class="mb-6">
+                        <!-- Replace with real logo -->
+                        <img src="{{ asset('logo.png') }}" alt="SRJ Plate Heat Exchangers" class="h-10 object-contain bg-white/10 p-2 rounded backdrop-blur-sm border border-white/10" onerror="this.src='https://via.placeholder.com/150x50/ffffff/000000?text=SRJ+LOGO'">
                     </div>
-                    <p class="text-slate-400 leading-relaxed mb-6">We deliver highly reliable plate heat exchangers and customized thermal engineering solutions for industrial applications worldwide, backed by 17+ years of expertise.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-red-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-red-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-red-600 transition-colors"><i class="fab fa-twitter"></i></a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">
+                        With 17+ years of experience, crafts high-quality PHE plates and gaskets in India. With our own factory and advanced software, we deliver reliable, efficient solutions for all industries.
+                    </p>
+                    <div class="inline-block mt-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Make_In_India.svg/256px-Make_In_India.svg.png" alt="Make in India" class="h-16 object-contain">
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4 class="text-lg font-bold text-white uppercase tracking-wider">Quick Links</h4>
-                    <div class="w-12 h-1 bg-red-600 rounded mb-6"></div>
-                    <ul class="text-slate-400">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('about') }}">About Us</a></li>
-                        <li><a href="{{ route('products.index') }}">Products</a></li>
-                        <li><a href="{{ route('blog.index') }}">Latest News</a></li>
-                        <li><a href="{{ route('contact') }}">Contact Us</a></li>
+
+                <!-- Col 2: Products (3 cols) -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-xl font-bold text-white mb-2 font-['Rajdhani']">Products</h4>
+                    <div class="w-12 h-[2px] bg-red-600 rounded mb-6"></div>
+                    <ul class="text-slate-400 text-sm space-y-3">
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Gasketed Plate Heat Exchangers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Semi Welded Plate Heat Exchangers</a></li>
+                        <li><a href="#" class="text-red-500 font-medium transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Welded Plate Heat Exchangers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Wide Gap Plate Heat Exchangers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Brazed Plate Heat Exchangers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Spiral Heat Exchangers</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 class="text-lg font-bold text-white uppercase tracking-wider">Solutions</h4>
-                    <div class="w-12 h-1 bg-red-600 rounded mb-6"></div>
-                    <ul class="text-slate-400">
-                        <li><a href="#">Gasketed PHE</a></li>
-                        <li><a href="#">Brazed PHE</a></li>
-                        <li><a href="#">Welded PHE</a></li>
-                        <li><a href="#">PHE Gaskets</a></li>
-                        <li><a href="{{ route('replacement-parts') }}">Replacement Parts</a></li>
+
+                <!-- Col 3: Quick Links (3 cols) -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-xl font-bold text-white mb-2 font-['Rajdhani']">Quick Links</h4>
+                    <div class="w-12 h-[2px] bg-red-600 rounded mb-6"></div>
+                    <ul class="text-slate-400 text-sm space-y-3">
+                        <li><a href="{{ route('home') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Home</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> About Us</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Blog</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Cookies Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Legal Terms and Conditions</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 class="text-lg font-bold text-white uppercase tracking-wider">Contact Details</h4>
-                    <div class="w-12 h-1 bg-red-600 rounded mb-6"></div>
-                    <div class="space-y-4 text-slate-400">
+
+                <!-- Col 4: Contact Details (3 cols) -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-xl font-bold text-white mb-2 font-['Rajdhani']">Contact Details</h4>
+                    <div class="w-12 h-[2px] bg-red-600 rounded mb-6"></div>
+                    <div class="space-y-4 text-slate-400 text-sm">
                         <p class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt text-red-500 mt-1"></i> 
-                            <span>{{ App\Models\Setting::get('address', 'A-1114, 11th Floor, I-Thum, A-40, Sector-62, Noida-201301') }}</span>
+                            <i class="fas fa-map-marker-alt text-slate-500 mt-1"></i> 
+                            <span>{{ App\Models\Setting::get('address', 'A-1114, 11th Floor, I-Thum, A-40, Sector - 62, Noida - 201301') }}</span>
                         </p>
                         <p class="flex items-center gap-3">
-                            <i class="fas fa-phone text-red-500"></i> 
-                            <span>{{ App\Models\Setting::get('phone', '+(91)-9716115504') }}</span>
+                            <i class="fas fa-phone-alt text-slate-500"></i> 
+                            <span>Phone: {{ App\Models\Setting::get('phone', '+(91)-9716115504') }}</span>
                         </p>
                         <p class="flex items-center gap-3">
-                            <i class="fas fa-envelope text-red-500"></i> 
-                            <span>{{ App\Models\Setting::get('email', 'info@srj.co.in') }}</span>
+                            <i class="fas fa-building text-slate-500"></i> 
+                            <span>01204533028</span>
                         </p>
+                        <p class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-slate-500"></i> 
+                            <a href="mailto:{{ App\Models\Setting::get('email', 'info@srj.co.in') }}" class="hover:text-white transition-colors">{{ App\Models\Setting::get('email', 'info@srj.co.in') }}</a>
+                        </p>
+                    </div>
+                    
+                    <!-- Social Icons -->
+                    <div class="flex flex-wrap gap-2 mt-8">
+                        <a href="{{ App\Models\Setting::get('facebook') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-facebook-f text-xs"></i></a>
+                        <a href="{{ App\Models\Setting::get('instagram') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                        <a href="{{ App\Models\Setting::get('twitter') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-twitter text-xs"></i></a>
+                        <a href="{{ App\Models\Setting::get('youtube') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-youtube text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-pinterest-p text-xs"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom border-t border-slate-800">
-            <div class="container flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500">
-                <p>{{ App\Models\Setting::get('footer_text', '© ' . date('Y') . ' SRJ Heatt Exchangers India Pvt. Ltd. All Rights Reserved.') }}</p>
-                <div class="flex gap-6 text-sm">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
+        
+        <!-- Footer Bottom -->
+        <div class="border-t border-white/10 relative z-10 bg-black/30">
+            <div class="container mx-auto px-4 py-4 text-center text-slate-500 text-sm font-light">
+                <p>{{ App\Models\Setting::get('footer_text', '© ' . date('Y') . ' SRJ Heat Exchangers. All Rights Reserved.') }}</p>
             </div>
         </div>
     </footer>

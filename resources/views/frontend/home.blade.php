@@ -25,8 +25,8 @@
                             Welcome to SRJ Heat Exchangers
                         </div>
                         
-                        <div class="hero-text-block border-l-4 border-red-600 pl-4 md:pl-8 mb-6 md:mb-10 bg-gradient-to-r from-[#0a1628]/90 to-transparent p-4 md:p-6 rounded-r-2xl backdrop-blur-sm border-y border-r border-white/5 w-[95%] md:w-full">
-                            <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-4 md:mb-6 drop-shadow-2xl font-['Rajdhani']">
+                        <div class="hero-text-block border-l-4 border-red-600 pl-4 md:pl-8 mb-6 md:mb-8 bg-gradient-to-r from-[#0a1628]/90 to-transparent p-4 md:p-6 rounded-r-2xl backdrop-blur-md border-y border-r border-white/10 w-full max-w-3xl">
+                            <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-3 md:mb-5 drop-shadow-2xl font-['Rajdhani']">
                                 {!! str_replace(['Thermal', 'Heat', 'Engineering'], ['<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Thermal</span>', '<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Heat</span>', '<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Engineering</span>'], $slider->title) !!}
                             </h1>
                             <p class="hero-subtitle text-base sm:text-lg md:text-xl text-slate-300 font-light max-w-2xl leading-relaxed drop-shadow-md border-l border-red-600/30 pl-3 md:pl-4">
@@ -35,15 +35,14 @@
                         </div>
                         
                         @if($slider->btn_text)
-                        <div class="hero-btn flex flex-col sm:flex-row gap-4 items-stretch sm:items-center pl-4 md:pl-8 w-[95%] sm:w-full">
-                            <a href="{{ $slider->btn_link }}" class="group relative inline-flex items-center justify-center px-8 md:px-10 py-3 md:py-4 text-sm tracking-wider font-bold text-white transition-all duration-500 bg-red-600 rounded-full overflow-hidden shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:-translate-y-1">
-                                <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-                                <span class="relative flex items-center gap-3">
+                        <div class="hero-btn flex flex-wrap gap-4 items-center pl-4 md:pl-8 mt-2 xl:mb-8 md:mt-4">
+                            <a href="{{ $slider->btn_link }}" class="group relative inline-flex items-center justify-center px-6 md:px-8 py-2.5 md:py-3 text-xs md:text-sm tracking-widest uppercase font-bold text-white transition-all duration-300 bg-red-600 rounded-full overflow-hidden shadow-lg hover:shadow-red-600/50 hover:-translate-y-0.5 border border-red-500">
+                                <span class="relative flex items-center gap-2">
                                     {{ $slider->btn_text }}
-                                    <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
                                 </span>
                             </a>
-                            <a href="{{ route('about') }}" class="group inline-flex items-center justify-center px-8 py-3 md:py-4 text-sm tracking-wider font-bold text-white transition-all duration-300 border-2 border-white/30 hover:bg-white hover:text-[#0a1628] rounded-full">
+                            <a href="{{ route('about') }}" class="group inline-flex items-center justify-center px-6 md:px-8 py-2.5 md:py-3 text-xs md:text-sm tracking-widest uppercase font-bold text-white transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white hover:text-[#0a1628] rounded-full shadow-lg">
                                 Explore More
                             </a>
                         </div>
@@ -55,12 +54,14 @@
         </div>
         
         <!-- Navigation Buttons -->
-        <div class="hero-nav-wrapper absolute right-4 lg:right-12 bottom-8 lg:bottom-12 z-20 flex gap-3">
-            <div class="hero-nav-btn swiper-button-prev-custom w-14 h-14 rounded-full glass-dark text-white flex items-center justify-center cursor-pointer hover:bg-red-600 hover:border-red-600 transition-all duration-300 shadow-xl group">
-                <i class="fas fa-arrow-left text-lg group-hover:-translate-x-1 transition-transform"></i>
+        <div class="absolute inset-y-0 left-2 md:left-6 z-20 flex items-center pointer-events-none">
+            <div class="swiper-button-prev-custom w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center cursor-pointer hover:bg-red-600 hover:scale-110 transition-all duration-300 shadow-lg border border-white/20 pointer-events-auto">
+                <i class="fas fa-chevron-left text-sm md:text-base"></i>
             </div>
-            <div class="hero-nav-btn swiper-button-next-custom w-14 h-14 rounded-full glass-dark text-white flex items-center justify-center cursor-pointer hover:bg-red-600 hover:border-red-600 transition-all duration-300 shadow-xl group">
-                <i class="fas fa-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+        </div>
+        <div class="absolute inset-y-0 right-2 md:right-6 z-20 flex items-center pointer-events-none">
+            <div class="swiper-button-next-custom w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center cursor-pointer hover:bg-red-600 hover:scale-110 transition-all duration-300 shadow-lg border border-white/20 pointer-events-auto">
+                <i class="fas fa-chevron-right text-sm md:text-base"></i>
             </div>
         </div>
         
@@ -92,7 +93,7 @@
 @endpush
 
 <!-- Stats Section -->
-<section class="py-12 my-6 bg-white relative z-20 -mt-16 mx-4 lg:mx-auto max-w-7xl rounded-2xl shadow-[0_20px_50px_rgba(10,22,40,0.06)] border border-slate-100">
+<section class="py-12 bg-white relative z-20 -mt-16 mb-16 lg:mb-24 mx-4 lg:mx-auto max-w-7xl rounded-2xl shadow-[0_20px_50px_rgba(10,22,40,0.06)] border border-slate-100">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
             <div class="text-center px-4" data-aos="fade-up" data-aos-delay="100">
@@ -229,59 +230,200 @@
     </div>
 </section>
 
-<!-- Why Choose Us / Dark Banner Section -->
-<section class="py-24 bg-[#0a1628] text-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-5 mix-blend-screen"></div>
-    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-red-600/20 to-transparent"></div>
+<!-- Why Partner With Us / Leading Manufacturers Section -->
+<section class="py-20 bg-[#405063] text-white relative overflow-hidden">
+    <!-- Abstract circular background lines (simulated with CSS/SVG) -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <circle cx="0" cy="50" r="40" fill="none" stroke="white" stroke-width="0.2" />
+            <circle cx="0" cy="50" r="60" fill="none" stroke="white" stroke-width="0.2" />
+            <circle cx="0" cy="50" r="80" fill="none" stroke="white" stroke-width="0.2" />
+            <circle cx="0" cy="50" r="100" fill="none" stroke="white" stroke-width="0.2" />
+            <circle cx="0" cy="50" r="120" fill="none" stroke="white" stroke-width="0.2" />
+        </svg>
+    </div>
     
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right">
-                <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-red-400 font-bold tracking-widest uppercase text-xs mb-6 border border-white/10">Why Partner With Us</span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mt-2 mb-8 leading-[1.1] font-['Rajdhani']">Setting the Standard in <br/><span class="text-red-500">Heat Transfer.</span></h2>
-                <p class="text-slate-300 text-lg mb-10 leading-relaxed font-light">
-                    We combine decades of technical expertise with state-of-the-art manufacturing to deliver heat exchangers that maximize efficiency and minimize downtime.
-                </p>
+        <div class="mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight font-['Rajdhani']">
+                Why We Are the Leading <br/>
+                <span class="text-red-500">Plate Heat Exchanger</span> Manufacturers <span class="text-red-500">in India</span>
+            </h2>
+            <p class="text-slate-200 text-sm md:text-base max-w-3xl leading-relaxed font-light">
+                We are a trusted plate heat exchanger supplier providing high quality plate heat exchangers, plate heat exchanger gasket solutions, and precision engineered PHE components for industrial applications in India.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+            <!-- Left: List Items (Takes up 7 cols) -->
+            <div class="lg:col-span-7 space-y-4" data-aos="fade-right">
                 
-                <div class="space-y-6">
-                    <div class="flex items-start gap-5 group">
-                        <div class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-lg group-hover:bg-red-600 group-hover:border-red-600 transition-colors duration-300">
-                            <i class="fas fa-cog text-red-500 text-xl group-hover:text-white transition-colors duration-300 group-hover:animate-spin-slow"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Precision Engineering</h4>
-                            <p class="text-slate-400 text-sm leading-relaxed">Custom-designed solutions optimized for your specific thermal requirements using advanced software.</p>
-                        </div>
+                <!-- Item 1 -->
+                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                        01
                     </div>
-                    <div class="flex items-start gap-5 group">
-                        <div class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-lg group-hover:bg-red-600 group-hover:border-red-600 transition-colors duration-300">
-                            <i class="fas fa-shield-alt text-red-500 text-xl group-hover:text-white transition-colors duration-300"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Uncompromising Quality</h4>
-                            <p class="text-slate-400 text-sm leading-relaxed">Rigorous testing protocols and ISO 9001:2015 certified manufacturing processes for zero defects.</p>
-                        </div>
+                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                        Our industrial plate heat exchangers use precision plate thickness from 0.4mm to 1.0mm ensuring reliable heat transfer and long term performance.
+                    </p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                        02
                     </div>
+                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                        Strict quality control ensures smooth plate heat exchanger gasket surfaces for reliable sealing and efficient thermal performance.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                        03
+                    </div>
+                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                        Advanced engineering software supports accurate plate heat exchanger drawing and customized design for industrial applications.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                        04
+                    </div>
+                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                        Our in-house manufacturing facility produces durable plate heat exchangers designed for HVAC systems and plate heat exchanger chiller applications.
+                    </p>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                        05
+                    </div>
+                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                        Each batch is tested for quality and easy plate heat exchanger cleaning ensuring reliable operation and long service life.
+                    </p>
+                </div>
+
+            </div>
+            
+            <!-- Right: Image (Takes up 5 cols) -->
+            <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-delay="200">
+                <div class="rounded-xl overflow-hidden shadow-2xl bg-white/10 p-1">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800" alt="Warehouse Engineering" class="rounded-lg object-cover w-full h-[300px] md:h-[400px]">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-24 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Image (5 cols) -->
+            <div class="lg:col-span-5" data-aos="fade-right">
+                <div class="rounded-2xl overflow-hidden shadow-2xl relative bg-gradient-to-br from-[#0a1628] to-red-700 border-8 border-slate-50 group">
+                    <!-- Simulated question mark -->
+                    <div class="absolute top-12 left-1/2 -translate-x-1/2 text-white/90 text-[10rem] font-black z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] leading-none group-hover:scale-110 transition-transform duration-500">?</div>
+                    <!-- Industrial Machine image -->
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" alt="Heat Exchanger FAQ" class="w-full h-[550px] object-cover opacity-50 mix-blend-overlay group-hover:mix-blend-normal group-hover:opacity-90 transition-all duration-700">
                 </div>
             </div>
             
-            <div class="relative hidden lg:block" data-aos="fade-left" data-aos-delay="200">
-                <div class="absolute inset-0 bg-red-600 rounded-3xl transform rotate-3 opacity-20 blur-xl"></div>
-                <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl p-2 bg-white/5 backdrop-blur-sm">
-                    <img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&q=80&w=800" alt="Engineering Excellence" class="rounded-2xl object-cover h-[500px] w-full">
+            <!-- Right Content (7 cols) -->
+            <div class="lg:col-span-7" data-aos="fade-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0a1628] mb-10 leading-tight">
+                    Plate Heat Exchanger Frequently Asked <br>
+                    <span class="text-red-600">Questions</span>
+                </h2>
+                
+                <div class="space-y-3">
+                    <!-- FAQ Item 1 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">1. What is a plate heat exchanger?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            A plate heat exchanger is a type of heat exchanger that uses metal plates to transfer heat between two fluids. This has a major advantage over a conventional heat exchanger in that the fluids are exposed to a much larger surface area because the fluids spread out over the plates.
+                        </div>
+                    </details>
                     
-                    <!-- Floating stat -->
-                    <div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-xl flex items-center justify-between">
-                        <div>
-                            <div class="text-xs font-bold text-slate-800 uppercase tracking-widest mb-1">Success Rate</div>
-                            <div class="text-3xl font-black text-red-600">99.8%</div>
+                    <!-- FAQ Item 2 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">2. What is the plate heat exchanger working principle?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            The working principle involves two fluids passing through alternating channels formed by corrugated plates. Heat is transferred from the hot fluid to the cold fluid through the thin metal plates without the fluids ever mixing.
                         </div>
-                        <div class="w-12 h-12 rounded-full bg-[#0a1628] flex items-center justify-center text-white">
-                            <i class="fas fa-chart-line"></i>
+                    </details>
+
+                    <!-- FAQ Item 3 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">3. Which Industries use plate heat exchangers?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            They are widely used in HVAC, chemical processing, food and beverage, dairy, marine, power generation, and pharmaceutical industries due to their high efficiency and compact size.
                         </div>
-                    </div>
+                    </details>
+
+                    <!-- FAQ Item 4 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">4. Are you plate heat exchanger manufacturers in India?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            Yes, SRJ Heat Exchangers is a leading manufacturer of premium quality plate heat exchangers and replacement parts based in India with our own advanced manufacturing facility.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 5 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">5. Do you supply plate heat exchanger gasket and replacement plates?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            Yes, we manufacture and supply OEM-quality replacement gaskets and plates compatible with all major global brands like Alfa Laval, GEA, Tranter, and more.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 6 -->
+                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
+                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                            <span class="text-sm md:text-base">6. How can I get plate heat exchanger price and quotation?</span>
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                <i class="fas fa-chevron-down text-sm"></i>
+                            </span>
+                        </summary>
+                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
+                            You can easily request a quote by clicking the "Get a Quote" button on our website, filling out the contact form, or directly calling our sales team with your specific requirements.
+                        </div>
+                    </details>
+
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
@@ -293,15 +435,9 @@
     <div class="absolute right-0 bottom-0 opacity-5 w-64 h-64 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMwYTE2MjgiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')] z-0"></div>
 
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
-            <div class="max-w-2xl">
-                <span class="text-red-600 font-bold tracking-[0.2em] uppercase text-xs">Testimonials</span>
-                <h2 class="text-4xl md:text-5xl font-black text-[#0a1628] mt-3">Trusted by Industry Leaders</h2>
-            </div>
-            <div class="flex gap-2">
-                <div class="testimonial-prev w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-[#0a1628] hover:bg-red-600 hover:text-white transition-colors cursor-pointer border border-slate-100"><i class="fas fa-arrow-left"></i></div>
-                <div class="testimonial-next w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-[#0a1628] hover:bg-red-600 hover:text-white transition-colors cursor-pointer border border-slate-100"><i class="fas fa-arrow-right"></i></div>
-            </div>
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-red-600 font-bold tracking-[0.2em] uppercase text-xs">Testimonials</span>
+            <h2 class="text-4xl md:text-5xl font-black text-[#0a1628] mt-3">Trusted by Industry Leaders</h2>
         </div>
         
         <div class="swiper testimonialSwiper !pb-12" data-aos="fade-up" data-aos-delay="200">
@@ -341,12 +477,8 @@
         spaceBetween: 30,
         loop: true,
         autoplay: {
-            delay: 5000,
+            delay: 3000,
             disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: '.testimonial-next',
-            prevEl: '.testimonial-prev',
         },
         breakpoints: {
             768: {
