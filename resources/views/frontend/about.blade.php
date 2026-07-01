@@ -4,32 +4,27 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-[#0a1628]">
-    <!-- Abstract Background -->
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20 mix-blend-luminosity"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/90 to-red-900/40"></div>
+<div class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-black">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-fixed"></div>
     
-    <!-- Floating particles/shapes -->
-    <div class="absolute top-1/4 right-10 w-64 h-64 bg-red-600 rounded-full blur-[120px] opacity-40 animate-[pulseGlow_4s_ease-in-out_infinite]"></div>
+    <!-- Dark Overlay so text is clear -->
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
     
-    <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center" data-aos="fade-up">
-        <span class="inline-block px-4 py-1 bg-white/10 backdrop-blur-md rounded-full text-red-400 font-bold tracking-[0.2em] uppercase text-xs mb-6 border border-white/10">Who We Are</span>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight font-['Rajdhani'] drop-shadow-2xl">
-            Pioneering <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Thermal</span> <br/> Engineering
-        </h1>
-        
-        <div class="flex items-center justify-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-slate-300">
-            <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors flex items-center gap-2"><i class="fas fa-home"></i> Home</a>
-            <span class="text-slate-500">/</span>
-            <span class="text-white">About Us</span>
+    <div class="container mx-auto px-4 lg:px-8 relative z-10" data-aos="fade-up">
+        <div class="flex flex-col items-start gap-3">
+            <!-- Left Side: Title -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg m-0">
+                About Us
+            </h1>
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-white drop-shadow-md mt-2">
+                <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors border-b border-transparent hover:border-red-400 pb-0.5">HOME</a>
+                <i class="fas fa-arrow-right text-red-500"></i>
+                <a href="{{ route('about') }}" class="hover:text-red-400 transition-colors border-b border-white pb-0.5">ABOUT US</a>
+            </div>
         </div>
-    </div>
-    
-    <!-- Wave separator -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-        <svg class="relative block w-full h-[50px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,123.59,190.27,110.15,236.42,99.8,279.79,78.36,321.39,56.44Z" class="fill-slate-50"></path>
-        </svg>
     </div>
 </div>
 
@@ -65,28 +60,28 @@
             </div>
             
             <!-- Right: Content -->
-            <div class="lg:col-span-7 space-y-8" data-aos="fade-left">
+            <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-xs tracking-[0.2em] uppercase border border-red-100 mb-6 shadow-sm">
-                        <i class="fas fa-building"></i> Company Overview
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-xs tracking-[0.2em] uppercase border border-red-100 mb-4 shadow-sm">
+                        <i class="fas fa-building"></i> 17+ Years of Manufacturing Excellence
                     </div>
-                    <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#0a1628] leading-[1.1] font-['Rajdhani']">
-                        {{ App\Models\Setting::get('about_title', 'Engineered for Performance. Built for Reliability.') }}
+                    <h2 class="text-3xl lg:text-4xl xl:text-5xl font-black text-[#0a1628] leading-[1.2] font-['Rajdhani']">
+                        {{ App\Models\Setting::get('about_title', 'About SRJ Heat Exchangers India') }}
                     </h2>
                 </div>
                 
-                <div class="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed font-light text-justify">
-                    {!! App\Models\Setting::get('about_content', '<p class="text-lg md:text-xl font-medium text-[#0a1628] leading-relaxed mb-6">SRJ Heatt Exchangers India Pvt. Ltd. (formerly known as SRJ Engineers Pvt. Ltd.) is an ISO 9001 certified company with over 17 years of experience as a trusted manufacturer of plate heat exchangers, plate and frame heat exchangers, and PHE heat exchanger components in India.</p><p>With advanced design software and an in-house manufacturing facility, we produce precision-engineered PHE plates and gaskets that meet consistent quality, performance, and durability standards across industrial applications.</p><p>We serve multiple industries and manufacture OEM-compatible replacement parts for plate heat exchangers, including high-quality PHE plates and gaskets designed for efficient heat transfer, reliable sealing, and long service life.</p>') !!}
+                <div class="prose prose-base prose-slate max-w-none text-slate-600 leading-relaxed font-normal text-justify">
+                    {!! App\Models\Setting::get('about_content', '<p class="font-medium text-[#0a1628] mb-4">SRJ Heatt Exchangers India Pvt. Ltd. (formerly known as SRJ Engineers Pvt. Ltd.) is an ISO 9001 certified company with over 17 years of experience as a trusted manufacturer of plate heat exchangers, plate and frame heat exchangers, and PHE heat exchanger components in India.</p><p class="mb-4">With advanced design software and an in-house manufacturing facility, we produce precision-engineered PHE plates and gaskets that meet consistent quality, performance, and durability standards across industrial applications.</p><p class="mb-4">We serve multiple industries and manufacture OEM-compatible replacement parts for plate heat exchangers, including high-quality PHE plates and gaskets designed for efficient heat transfer, reliable sealing, and long service life. Our solutions are ideal for industrial plate heat exchangers, ensuring cost-effective maintenance, reduced downtime, and consistent performance across HVAC, power, chemical, pharmaceutical, food processing, and process industries.</p><p>Our continuous focus on innovation, tooling, and engineering accuracy ensures reliable performance and long-term customer satisfaction.</p>') !!}
                 </div>
                 
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-1">
-                        <i class="fas fa-check-circle text-red-600 text-xl"></i>
-                        <span class="font-bold text-[#0a1628] text-sm md:text-base">ISO 9001 Certified</span>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <div class="flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-1">
+                        <i class="fas fa-check-circle text-red-600 text-lg"></i>
+                        <span class="font-bold text-[#0a1628] text-sm">ISO 9001 Certified</span>
                     </div>
-                    <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-1">
-                        <i class="fas fa-check-circle text-red-600 text-xl"></i>
-                        <span class="font-bold text-[#0a1628] text-sm md:text-base">In-house Manufacturing</span>
+                    <div class="flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-1">
+                        <i class="fas fa-check-circle text-red-600 text-lg"></i>
+                        <span class="font-bold text-[#0a1628] text-sm">In-house Manufacturing</span>
                     </div>
                 </div>
             </div>

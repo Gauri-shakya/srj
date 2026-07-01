@@ -72,6 +72,7 @@
                             @endforeach
                         </ul>
                     </li>
+                    <li><a href="{{ route('home') }}">SRJ Heat Exchangers</a></li>
                     <li class="has-dropdown">
                         <a href="{{ route('replacement-parts') }}" class="flex items-center justify-between lg:justify-start gap-1">Replacement Parts <i class="fas fa-chevron-down text-[10px] text-red-600"></i></a>
                         <ul class="dropdown-menu grid grid-cols-1 sm:grid-cols-2 gap-x-4 lg:min-w-[400px] p-2 lg:p-4">
@@ -82,8 +83,8 @@
                     </li>
                     <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                    <li class="lg:hidden mt-4">
-                        <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-white bg-red-600 rounded-full shadow-lg w-full">
+                    <li class="lg:hidden mt-4 mobile-btn">
+                        <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-3 text-sm font-bold text-white bg-red-600 rounded-full shadow-lg w-full !border-none !justify-center hover:bg-[#0a1628] transition-colors">
                             Get Quote Now <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </li>
@@ -234,6 +235,16 @@
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars-staggered');
             }
+        });
+
+        // Mobile dropdown toggles
+        document.querySelectorAll('.has-dropdown > a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active-dropdown');
+                }
+            });
         });
     </script>
     @stack('scripts')

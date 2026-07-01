@@ -95,15 +95,17 @@ img { max-width: 100%; height: auto; display: block; }
 .header.scrolled .header-inner { padding: 4px 0; }
 .logo h2 { font-size: 2rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
 
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links { display: flex; gap: 14px; align-items: center; margin: 0; }
 .nav-links a { 
-    font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; 
-    color: var(--primary); position: relative; padding: 10px 0; display: inline-block; 
+    font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; 
+    color: var(--primary); position: relative; padding: 8px 2px; display: inline-block; 
+    white-space: nowrap; transition: color 0.3s ease;
 }
 .nav-links a::after { 
-    content: ''; position: absolute; bottom: 0px; left: 0; width: 0; height: 2.5px; 
-    background: var(--accent); transition: var(--transition); border-radius: 2px;
+    content: ''; position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); width: 0; height: 2.5px; 
+    background: var(--accent); transition: width 0.3s ease; border-radius: 2px;
 }
+.nav-links a:hover { color: var(--accent); }
 .nav-links a:hover::after { width: 100%; }
 
 /* Dropdown Menu Styles */
@@ -184,15 +186,50 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 1024px) {
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .hero-title { font-size: 3.5rem; }
-}
-@media (max-width: 768px) {
+    
+    /* Responsive Navbar for Tablet & Mobile */
     .topbar { display: none; }
     .mobile-menu-btn { display: block; }
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 20px 24px; box-shadow: var(--shadow-float); flex-direction: column; text-align: left; border-top: 1px solid rgba(0,0,0,0.05); gap: 15px; }
-    .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links { 
+        display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+        height: calc(100vh - 65px); /* Covers full height instead of getting stuck */
+        background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); 
+        padding: 20px 24px 40px; box-shadow: var(--shadow-float); flex-direction: column; 
+        text-align: left; border-top: 1px solid rgba(0,0,0,0.05); gap: 0; 
+        overflow-y: auto; 
+    }
     .nav-links.active { display: flex; }
-    .header-action .btn { display: none; }
+    .nav-links li:not(.mobile-btn) > a { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.05); width: 100%; white-space: normal; color: var(--primary); font-size: 1rem; }
+    .nav-links li:not(.mobile-btn) > a::after { display: none; }
+    .nav-links li { width: 100%; }
+    .nav-links li:not(.mobile-btn):last-child > a { border-bottom: none; }
+    
+    /* Fix Get Quote Button */
+    .nav-links li.mobile-btn { margin-top: auto; padding-top: 20px; }
+    .nav-links li.mobile-btn a { color: #ffffff !important; padding: 12px 24px !important; }
+    
+    /* Mobile Dropdown Fix */
+    .nav-links .has-dropdown { padding: 0; }
+    .dropdown-menu { 
+        position: static !important; transform: none !important; visibility: visible; opacity: 1; 
+        box-shadow: none; border: none; background: rgba(0,0,0,0.02); 
+        padding: 0; min-width: 100%; margin: 0; border-radius: 8px; 
+        display: none !important; left: 0 !important;
+    }
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown.active-dropdown .dropdown-menu { 
+        display: block !important; padding: 10px 0; margin-top: 5px; margin-bottom: 10px;
+        transform: none !important; left: 0 !important;
+    }
+    .has-dropdown > a i { transition: transform 0.3s ease; }
+    .has-dropdown.active-dropdown > a i { transform: rotate(180deg); }
+    
+    .dropdown-menu li a { padding: 12px 20px !important; font-size: 0.95rem !important; border-bottom: 1px solid rgba(0,0,0,0.03) !important; color: var(--text) !important; font-weight: 500 !important; display: block !important; }
+    .dropdown-menu li:last-child a { border-bottom: none !important; }
+}
+
+@media (max-width: 768px) {
+    .header-action .btn, .header-action a { display: none; }
     .footer-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: 2.5rem; }
     .hero-nav-wrapper { right: 10px; bottom: 10px; flex-direction: row; }
