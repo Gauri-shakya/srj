@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Products\Pages;
+namespace App\Filament\Resources\Quotes\Pages;
 
-use App\Filament\Resources\Products\ProductResource;
-use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\Quotes\QuoteResource;
+use Filament\Actions\EditAction;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditProduct extends EditRecord
+class ViewQuote extends ViewRecord
 {
-    protected static string $resource = ProductResource::class;
+    protected static string $resource = QuoteResource::class;
 
     protected function getHeaderActions(): array
     {

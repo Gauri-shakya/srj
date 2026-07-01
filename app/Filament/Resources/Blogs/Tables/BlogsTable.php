@@ -34,8 +34,8 @@ class BlogsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->iconButton()->iconButton(),
+                DeleteAction::make()->iconButton()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

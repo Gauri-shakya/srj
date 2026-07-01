@@ -18,7 +18,9 @@ class ProductCategoryResource extends Resource
 {
     protected static ?string $model = ProductCategory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-group';
+    protected static ?int $navigationSort = 3;
+
 
     protected static ?string $recordTitleAttribute = 'name';
 

@@ -40,8 +40,8 @@ class ReplacementBrandsTable
                 //
             ])
             ->recordActions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\DeleteAction::make(),
+                \Filament\Actions\EditAction::make()->iconButton()->iconButton(),
+                \Filament\Actions\DeleteAction::make()->iconButton()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

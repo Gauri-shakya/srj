@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Settings\Pages;
+namespace App\Filament\Resources\Locations\Pages;
 
-use App\Filament\Resources\Settings\SettingResource;
+use App\Filament\Resources\Locations\LocationResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
-class ListSettings extends ListRecords
+class ListLocations extends ListRecords
 {
-    protected static string $resource = SettingResource::class;
+    protected static string $resource = LocationResource::class;
 
     protected function getHeaderActions(): array
     {

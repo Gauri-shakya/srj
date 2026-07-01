@@ -22,6 +22,12 @@ class ProductForm
                     ->required()
                     ->searchable()
                     ->preload(),
+                Select::make('locations')
+                    ->relationship('locations', 'name')
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->label('Target Locations'),
                 TextInput::make('name')
                     ->required()
                     ->live(onBlur: true)

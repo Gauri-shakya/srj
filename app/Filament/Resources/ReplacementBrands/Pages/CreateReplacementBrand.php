@@ -16,4 +16,15 @@ class CreateReplacementBrand extends CreateRecord
             $this->getCancelFormAction(),
         ];
     }
+    
+    protected function getHeaderActions(): array
+    {
+        $actions = parent::getHeaderActions() ?? [];
+        array_unshift($actions, \Filament\Actions\Action::make('back')
+            ->label('Back to List')
+            ->url(fn() => $this->getResource()::getUrl('index'))
+            ->color('gray')
+            ->icon('heroicon-o-arrow-left'));
+        return $actions;
+    }
 }

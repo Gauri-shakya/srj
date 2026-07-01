@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\ProductCategories\Schemas;
+namespace App\Filament\Resources\Locations\Schemas;
 
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
-class ProductCategoryForm
+class LocationForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -18,10 +17,11 @@ class ProductCategoryForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
-                Textarea::make('description')
+                TextInput::make('meta_title')
+                    ->default(null),
+                Textarea::make('meta_description')
+                    ->default(null)
                     ->columnSpanFull(),
-                FileUpload::make('image')
-                    ->image(),
                 Toggle::make('is_active')
                     ->required(),
             ]);

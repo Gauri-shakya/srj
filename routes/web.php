@@ -25,3 +25,9 @@ use App\Http\Controllers\Frontend\BlogController;
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+use App\Http\Controllers\Frontend\SeoLocationController;
+// Dynamic SEO Location Route (e.g. /plate-heat-exchanger-in-noida)
+Route::get('/{productSlug}-in-{locationSlug}', [SeoLocationController::class, 'show'])
+    ->where('productSlug', '.*')
+    ->name('seo.product.location');

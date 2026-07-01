@@ -21,9 +21,6 @@ class ProductCategoriesTable
                 TextColumn::make('slug')
                     ->searchable(),
                 ImageColumn::make('image'),
-                TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('created_at')
@@ -39,7 +36,8 @@ class ProductCategoriesTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()->iconButton(),
+                \Filament\Actions\DeleteAction::make()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -41,7 +41,7 @@ class SlidersTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()->iconButton()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

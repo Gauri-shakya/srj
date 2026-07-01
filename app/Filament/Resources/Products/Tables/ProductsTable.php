@@ -13,9 +13,14 @@ class ProductsTable
     {
         return $table
             ->columns([
-                \Filament\Tables\Columns\ImageColumn::make('image'),
+                \Filament\Tables\Columns\ImageColumn::make('image')
+                    ->defaultImageUrl('https://placehold.co/150x150?text=No+Image'),
                 \Filament\Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 \Filament\Tables\Columns\TextColumn::make('category.name')->searchable()->sortable(),
+                \Filament\Tables\Columns\TextColumn::make('locations.name')
+                    ->label('Locations')
+                    ->badge()
+                    ->searchable(),
                 \Filament\Tables\Columns\IconColumn::make('is_active')->boolean(),
                 \Filament\Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
@@ -23,7 +28,8 @@ class ProductsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                \Filament\Actions\EditAction::make()->iconButton(),
+                \Filament\Actions\DeleteAction::make()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -1,21 +1,29 @@
 <?php
 
-namespace App\Filament\Resources\Settings\Tables;
+namespace App\Filament\Resources\Locations\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class SettingsTable
+class LocationsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('key')
+                TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('slug')
+                    ->searchable(),
+                TextColumn::make('meta_title')
+                    ->searchable(),
+                IconColumn::make('is_active')
+                    ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -29,7 +37,8 @@ class SettingsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                ViewAction::make(),
+                EditAction::make()->iconButton()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
