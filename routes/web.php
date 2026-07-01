@@ -17,5 +17,8 @@ Route::get('/product/{slug}', function ($slug) {
     return view('frontend.products.show', compact('product'));
 })->name('products.show');
 Route::get('/replacement-parts', fn() => 'Replacement Parts')->name('replacement-parts');
-Route::get('/replacement-brand/{slug}', fn($slug) => "Brand: $slug")->name('replacement-brand');
+Route::get('/replacement-brand/{slug}', function ($slug) {
+    $brand = \App\Models\ReplacementBrand::where('slug', $slug)->firstOrFail();
+    return view('frontend.replacement_brands.show', compact('brand'));
+})->name('replacement-brand');
 Route::get('/blog', fn() => 'Blog')->name('blog.index');

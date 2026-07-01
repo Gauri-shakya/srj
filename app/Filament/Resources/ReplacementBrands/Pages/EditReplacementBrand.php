@@ -13,7 +13,11 @@ class EditReplacementBrand extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            \Filament\Actions\Action::make('back')
+                ->label('Back to List')
+                ->url(fn() => $this->getResource()::getUrl('index'))
+                ->color('gray')
+                ->icon('heroicon-o-arrow-left'),
         ];
     }
 }

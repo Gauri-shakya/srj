@@ -8,4 +8,12 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateReplacementBrand extends CreateRecord
 {
     protected static string $resource = ReplacementBrandResource::class;
+
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getCreateFormAction(),
+            $this->getCancelFormAction(),
+        ];
+    }
 }

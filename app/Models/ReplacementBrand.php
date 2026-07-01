@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReplacementBrand extends Model
 {
-    //
+    protected $guarded = [];
+
+    protected $casts = [
+        'faqs' => 'array',
+    ];
 }

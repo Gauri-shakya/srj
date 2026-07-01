@@ -20,7 +20,8 @@ class ReplacementBrandsTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->defaultImageUrl('https://ui-avatars.com/api/?name=Brand&color=7F9CF5&background=EBF4FF'),
                 TextColumn::make('order')
                     ->numeric()
                     ->sortable(),
@@ -39,7 +40,8 @@ class ReplacementBrandsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

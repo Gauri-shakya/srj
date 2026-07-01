@@ -1,13 +1,13 @@
 @extends('frontend.layouts.app')
 
-@section('title', $product->name . ' | ' . App\Models\Setting::get('site_name', 'SRJ Heat Exchangers'))
+@section('title', $brand->name . ' | ' . App\Models\Setting::get('site_name', 'SRJ Heat Exchangers'))
 
 @section('content')
 <!-- Product Header -->
 <div class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-black">
     <!-- Background Image -->
-    @if($product->image)
-        <div class="absolute inset-0 bg-[url('{{ asset('storage/' . $product->image) }}')] bg-cover bg-center bg-fixed"></div>
+    @if($brand->image)
+        <div class="absolute inset-0 bg-[url('{{ asset('storage/' . $brand->image) }}')] bg-cover bg-center bg-fixed"></div>
     @else
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-fixed"></div>
     @endif
@@ -19,18 +19,16 @@
         <div class="flex flex-col items-start gap-3">
             <!-- Left Side: Title -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg m-0 leading-tight max-w-4xl">
-                {{ $product->name }}
+                {{ $brand->name }}
             </h1>
             
             <!-- Breadcrumbs -->
             <div class="flex items-center flex-wrap gap-2 md:gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-white drop-shadow-md mt-2">
                 <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors border-b border-transparent hover:border-red-400 pb-0.5 whitespace-nowrap">HOME</a>
                 <i class="fas fa-arrow-right text-red-500 text-[10px] md:text-xs"></i>
-                @if($product->category)
-                    <span class="text-slate-300 border-b border-transparent pb-0.5 whitespace-nowrap">{{ $product->category->name }}</span>
-                    <i class="fas fa-arrow-right text-red-500 text-[10px] md:text-xs"></i>
-                @endif
-                <span class="hover:text-red-400 transition-colors border-b border-white pb-0.5 whitespace-nowrap cursor-default">{{ $product->name }}</span>
+                <a href="{{ route('replacement-parts') }}" class="hover:text-red-400 transition-colors border-b border-transparent hover:border-red-400 pb-0.5 whitespace-nowrap text-slate-300">REPLACEMENT PARTS</a>
+                <i class="fas fa-arrow-right text-red-500 text-[10px] md:text-xs"></i>
+                <span class="hover:text-red-400 transition-colors border-b border-white pb-0.5 whitespace-nowrap cursor-default">{{ $brand->name }}</span>
             </div>
         </div>
     </div>
@@ -40,18 +38,49 @@
 <section class="py-20 bg-white relative">
     <div class="container mx-auto px-4 lg:px-8">
         
-        <!-- Top Area: Intro & Image -->
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-12">
+        @php
+            $allBrands = \App\Models\ReplacementBrand::where('is_active', true)->orderBy('order')->get();
+        @endphp
+        
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            
+            <!-- Sidebar -->
+            <aside class="w-full lg:w-1/4 shrink-0 order-2 lg:order-1">
+                <div class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(10,22,40,0.06)] border border-slate-200 overflow-hidden sticky top-32">
+                    <div class="bg-[#0a1628] p-5">
+                        <h3 class="text-xl font-bold text-white font-['Rajdhani'] flex items-center gap-2">
+                            <i class="fas fa-tools text-red-500"></i> Replacement Parts
+                        </h3>
+                    </div>
+                    <ul class="flex flex-col">
+                        @foreach($allBrands as $item)
+                            <li class="border-b border-slate-100 last:border-0 group">
+                                <a href="{{ route('replacement-brand', $item->slug) }}" 
+                                   class="flex items-center gap-3 px-5 py-4 transition-all duration-300 {{ $brand->id === $item->id ? 'bg-red-50/50 text-red-600 font-bold border-l-4 border-red-600' : 'text-slate-600 hover:bg-slate-50 hover:text-red-600 border-l-4 border-transparent' }}">
+                                    <i class="fas fa-chevron-right text-[10px] {{ $brand->id === $item->id ? 'text-red-600' : 'text-slate-300 group-hover:text-red-500 transition-colors' }}"></i>
+                                    <span class="text-sm leading-tight">{{ $item->name }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </aside>
+            
+            <!-- Main Content -->
+            <div class="w-full lg:w-3/4 order-1 lg:order-2">
+                
+                <!-- Top Area: Intro & Image -->
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
             
             <!-- Left Side: Title, Desc, Buttons -->
             <div class="order-2 lg:order-1 flex flex-col justify-center h-full" data-aos="fade-right">
                 <h2 class="text-3xl lg:text-4xl font-black text-[#0a1628] mb-6 font-['Rajdhani'] leading-tight">
-                    {{ $product->name }}
+                    {{ $brand->name }}
                 </h2>
                 
-                @if($product->description)
+                @if($brand->description)
                     <p class="text-base text-slate-600 mb-8 font-medium leading-relaxed text-justify">
-                        {{ $product->description }}
+                        {{ $brand->description }}
                     </p>
                 @endif
                 
@@ -59,7 +88,7 @@
                     <button onclick="openQuoteModal()" class="inline-flex items-center justify-center px-4 py-2.5 text-[11px] font-bold tracking-widest uppercase text-white transition-all duration-300 bg-red-600 rounded-full shadow-lg shadow-red-600/30 hover:bg-[#0a1628] hover:-translate-y-1">
                         Quote Now <i class="fas fa-arrow-right ml-1.5"></i>
                     </button>
-                    <a href="https://wa.me/919716115504?text={{ urlencode('Hello, I am interested in ' . $product->name . '. Can you provide more details?') }}" target="_blank" class="inline-flex items-center justify-center px-4 py-2.5 text-[11px] font-bold tracking-widest uppercase text-[#0a1628] transition-all duration-300 bg-slate-100 rounded-full hover:bg-green-500 hover:text-white hover:-translate-y-1 group">
+                    <a href="https://wa.me/919716115504?text={{ urlencode('Hello, I am interested in ' . $brand->name . '. Can you provide more details?') }}" target="_blank" class="inline-flex items-center justify-center px-4 py-2.5 text-[11px] font-bold tracking-widest uppercase text-[#0a1628] transition-all duration-300 bg-slate-100 rounded-full hover:bg-green-500 hover:text-white hover:-translate-y-1 group">
                         <i class="fab fa-whatsapp text-sm mr-1.5 text-green-500 group-hover:text-white"></i> WhatsApp
                     </a>
                 </div>
@@ -69,8 +98,8 @@
             <div class="order-1 lg:order-2 relative" data-aos="fade-left">
                 <div class="relative z-10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(10,22,40,0.08)] bg-white border border-slate-100 group">
                     <div class="absolute inset-0 bg-[#0a1628]/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                    @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    @if($brand->image)
+                        <img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->name }}" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
                     @else
                         <div class="w-full h-[400px] bg-slate-50 flex items-center justify-center text-slate-300 rounded-xl">
                             <i class="fas fa-image text-5xl"></i>
@@ -91,9 +120,97 @@
         <div class="w-full max-w-5xl mx-auto" data-aos="fade-up">
             <!-- Filament RichText Output -->
             <div class="prose prose-base prose-slate max-w-none text-slate-600 font-normal text-justify prose-headings:text-[#0a1628] prose-headings:font-bold prose-headings:font-['Rajdhani'] prose-a:text-red-600 prose-li:marker:text-red-600 prose-ul:list-image-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2RjMjYyNiIgY2xhc3M9ImJpIGJpLWNoZWNrLWNpcmNsZS1maWxsIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGQ9Ik0xNiA4QTE2IDE2IDAgMSAxIDAgOGE4IDggMCAwIDEgMTYgMHptLTMuOTctMy4wM2EtLjc1Ljc1IDAgMCAwLTEuMDgtdW0tLjIyLS4yMmwtMy40NyAzLjQ3LTEuNDQtMS40NGEuNzUuNzUgMCAwIDAtMS4wNiAxLjA2bDIgMmEuNzUuNzUgMCAwIDAgMS4wNiAwbDQtNGEuNzUuNzUgMCAwIDAgMC0xLjA2eiIvPjwvc3ZnPg==')] space-y-4">
-                {!! $product->content !!}
+                {!! $brand->content !!}
             </div>
+            
+            @if(!empty($brand->faqs) && count($brand->faqs) > 0)
+            <!-- FAQ Section -->
+            <div class="mt-16" data-aos="fade-up">
+                <hr class="border-t border-slate-200 mb-12">
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    <!-- Left Image -->
+                    <div class="lg:col-span-4 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(10,22,40,0.06)] bg-white border border-slate-100 flex items-center justify-center p-8 sticky top-32">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5726/5726678.png" alt="FAQ" class="w-full max-w-[180px] h-auto object-contain opacity-80 drop-shadow-md hover:scale-105 transition-transform duration-500">
+                    </div>
+                    
+                    <!-- Right Accordion -->
+                    <div class="lg:col-span-8">
+                        <h2 class="text-3xl font-black text-[#0a1628] font-['Rajdhani'] mb-8">
+                            Frequently Asked <span class="text-red-600">Questions</span>
+                        </h2>
+                        
+                        <div class="space-y-4" id="faq-accordion">
+                            @foreach($brand->faqs as $index => $faq)
+                            <div class="faq-item bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm transition-all duration-300">
+                                <button onclick="toggleFaq({{ $index }})" class="faq-btn w-full px-6 py-4 flex items-center justify-between text-left focus:outline-none transition-colors hover:bg-slate-50 text-[#0a1628]">
+                                    <span class="font-bold text-sm md:text-base pr-4">{{ $index + 1 }}. {{ $faq['question'] }}</span>
+                                    <i class="fas fa-arrow-up faq-icon transition-transform duration-300 text-sm text-slate-400 rotate-180"></i>
+                                </button>
+                                <div class="faq-content hidden px-6 py-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                                    {{ $faq['answer'] }}
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function toggleFaq(index) {
+                        const items = document.querySelectorAll('.faq-item');
+                        items.forEach((item, i) => {
+                            const content = item.querySelector('.faq-content');
+                            const icon = item.querySelector('.faq-icon');
+                            const btn = item.querySelector('.faq-btn');
+                            
+                            if (i === index) {
+                                // Toggle current
+                                if (content.classList.contains('hidden')) {
+                                    content.classList.remove('hidden');
+                                    icon.classList.remove('rotate-180'); // point up
+                                    icon.classList.add('text-white');
+                                    icon.classList.remove('text-slate-400');
+                                    btn.classList.add('bg-[#0a1628]', 'text-white');
+                                    btn.classList.remove('hover:bg-slate-50', 'text-[#0a1628]');
+                                    item.classList.add('ring-1', 'ring-[#0a1628]', 'border-[#0a1628]');
+                                } else {
+                                    content.classList.add('hidden');
+                                    icon.classList.add('rotate-180'); // point down
+                                    icon.classList.remove('text-white');
+                                    icon.classList.add('text-slate-400');
+                                    btn.classList.remove('bg-[#0a1628]', 'text-white');
+                                    btn.classList.add('hover:bg-slate-50', 'text-[#0a1628]');
+                                    item.classList.remove('ring-1', 'ring-[#0a1628]', 'border-[#0a1628]');
+                                }
+                            } else {
+                                // Close others
+                                content.classList.add('hidden');
+                                icon.classList.add('rotate-180');
+                                icon.classList.remove('text-white');
+                                icon.classList.add('text-slate-400');
+                                btn.classList.remove('bg-[#0a1628]', 'text-white');
+                                btn.classList.add('hover:bg-slate-50', 'text-[#0a1628]');
+                                item.classList.remove('ring-1', 'ring-[#0a1628]', 'border-[#0a1628]');
+                            }
+                        });
+                    }
+                    
+                    // Open first FAQ by default
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const firstFaq = document.querySelector('.faq-item');
+                        if (firstFaq) {
+                            // wait a tiny bit to ensure DOM is ready
+                            setTimeout(() => { toggleFaq(0); }, 100);
+                        }
+                    });
+                </script>
+            </div>
+            @endif
         </div>
+        
+        </div> <!-- End Main Content -->
+        
+        </div> <!-- End Flex Container -->
         
         <!-- Quote Modal -->
         <div id="quoteModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 sm:p-6">
@@ -114,7 +231,7 @@
                 <div class="p-5 md:p-8 overflow-y-auto custom-scrollbar">
                     <form action="{{ route('quote.store') }}" method="POST" class="space-y-4">
                         @csrf
-                        <input type="hidden" name="product_name" value="{{ $product->name }}">
+                        <input type="hidden" name="product_name" value="{{ $brand->name }}">
                         
                         <div>
                             <label class="block text-sm font-bold text-[#0a1628] mb-1.5">Full Name <span class="text-red-600">*</span></label>
@@ -159,7 +276,7 @@
                 if (productName) {
                     productNameInput.value = productName;
                 } else {
-                    productNameInput.value = "{{ addslashes($product->name) }}";
+                    productNameInput.value = "{{ addslashes($brand->name) }}";
                 }
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -174,74 +291,7 @@
     </div>
 </section>
 
-<!-- Related Products Section -->
-@php
-    $relatedProducts = \App\Models\Product::where('is_active', true)
-        ->where('id', '!=', $product->id)
-        ->when($product->product_category_id, function($query) use ($product) {
-            return $query->where('product_category_id', $product->product_category_id);
-        })
-        ->inRandomOrder()
-        ->take(3)
-        ->get();
-        
-    // Fallback if no related products in same category
-    if($relatedProducts->isEmpty()) {
-        $relatedProducts = \App\Models\Product::where('is_active', true)
-            ->where('id', '!=', $product->id)
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
-    }
-@endphp
 
-@if($relatedProducts->isNotEmpty())
-<section class="py-20 bg-slate-50 border-t border-slate-200">
-    <div class="container mx-auto px-4 lg:px-8">
-        <div class="flex flex-wrap items-end justify-between mb-12 gap-4">
-            <div>
-                <h2 class="text-3xl lg:text-4xl font-black text-[#0a1628] font-['Rajdhani']">Related <span class="text-red-600">Products</span></h2>
-                <div class="w-16 h-1 bg-red-600 mt-4 rounded-full"></div>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @foreach($relatedProducts as $related)
-                <div class="group bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(10,22,40,0.08)] hover:shadow-[0_20px_40px_rgba(10,22,40,0.12)] transition-all duration-300 border border-slate-200 flex flex-col h-full hover:-translate-y-2">
-                    <a href="{{ route('products.show', $related->slug) }}" class="block">
-                        <div class="h-64 bg-slate-50/50 relative p-3 flex items-center justify-center">
-                            @if($related->image)
-                                <img src="{{ asset('storage/' . $related->image) }}" alt="{{ $related->name }}" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500 drop-shadow-md">
-                            @else
-                                <i class="fas fa-box text-5xl text-slate-200 group-hover:text-red-400 transition-colors duration-500"></i>
-                            @endif
-                            <!-- Hover Overlay -->
-                            <div class="absolute inset-0 bg-[#0a1628]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
-                    </a>
-                    
-                    <div class="p-6 flex-1 flex flex-col">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-red-600 mb-2 block">{{ $related->category ? $related->category->name : 'Product' }}</span>
-                        <a href="{{ route('products.show', $related->slug) }}" class="block mb-2">
-                            <h3 class="text-xl font-bold text-[#0a1628] font-['Rajdhani'] group-hover:text-red-600 transition-colors leading-tight">{{ $related->name }}</h3>
-                        </a>
-                        <p class="text-sm text-slate-500 line-clamp-2 mb-6 flex-1">{{ $related->description ?? 'Premium heat exchanger designed for optimum performance and industrial reliability.' }}</p>
-                        
-                        <div class="mt-auto pt-5 border-t border-slate-100 grid grid-cols-2 gap-3">
-                            <button onclick="openQuoteModal('{{ addslashes($related->name) }}')" class="inline-flex items-center justify-center w-full px-2 py-2.5 text-[11px] lg:text-xs font-bold tracking-wider uppercase text-white transition-all duration-300 bg-red-600 rounded-lg shadow-md shadow-red-600/20 hover:bg-[#0a1628] hover:-translate-y-1 hover:shadow-lg">
-                                Get Quote
-                            </button>
-                            <a href="https://wa.me/919716115504?text={{ urlencode('Hello, I want to know more about ' . $related->name) }}" target="_blank" class="whatsapp-card-btn inline-flex items-center justify-center w-full px-2 py-2.5 text-[11px] lg:text-xs font-bold tracking-wider uppercase text-[#0a1628] transition-all duration-300 bg-slate-100 rounded-lg hover:bg-green-500 hover:text-white hover:-translate-y-1 hover:shadow-lg group/wa">
-                                <i class="fab fa-whatsapp text-sm mr-1.5 text-green-500 group-hover/wa:text-white transition-colors"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
 
 <!-- Call to Action Banner -->
 <section class="py-16 bg-[#0a1628] relative overflow-hidden">
