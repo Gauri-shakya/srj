@@ -51,7 +51,6 @@ class BlogResource extends Resource
         return [
             'index' => ListBlogs::route('/'),
             'create' => CreateBlog::route('/create'),
-            'view' => ViewBlog::route('/{record}'),
             'edit' => EditBlog::route('/{record}/edit'),
         ];
     }

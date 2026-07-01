@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Blogs\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -23,7 +23,7 @@ class BlogForm
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn ($set, ?string $state) => $set('slug', Str::slug($state))),
                         
                         TextInput::make('slug')
                             ->required()
