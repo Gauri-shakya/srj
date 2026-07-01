@@ -21,4 +21,7 @@ Route::get('/replacement-brand/{slug}', function ($slug) {
     $brand = \App\Models\ReplacementBrand::where('slug', $slug)->firstOrFail();
     return view('frontend.replacement_brands.show', compact('brand'));
 })->name('replacement-brand');
-Route::get('/blog', fn() => 'Blog')->name('blog.index');
+use App\Http\Controllers\Frontend\BlogController;
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
