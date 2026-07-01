@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
     
     <!-- Tailwind CSS CDN (For instant updates without npm run build) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     
     @stack('styles')
 </head>
@@ -67,8 +67,8 @@
                     <li class="has-dropdown">
                         <a href="{{ route('products.index') }}" class="flex items-center justify-between lg:justify-start gap-1">Our Products <i class="fas fa-chevron-down text-[10px] text-red-600"></i></a>
                         <ul class="dropdown-menu">
-                            @foreach(App\Models\ProductCategory::where('is_active', true)->orderBy('order')->get() as $cat)
-                                <li><a href="{{ route('products.category', $cat->slug) }}">{{ $cat->name }}</a></li>
+                            @foreach(App\Models\Product::where('is_active', true)->get() as $product)
+                                <li><a href="{{ route('products.show', $product->slug) }}">{{ $product->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>
