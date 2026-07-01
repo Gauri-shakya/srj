@@ -3,33 +3,28 @@
 @section('title', 'Contact Us | ' . App\Models\Setting::get('site_name', 'SRJ Heat Exchangers'))
 
 @section('content')
-<!-- Page Header (Same Premium Theme as About Us) -->
-<div class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-[#0a1628]">
-    <!-- Abstract Background -->
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20 mix-blend-luminosity"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0a1628] via-[#0a1628]/90 to-red-900/40"></div>
+<!-- Page Header -->
+<div class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-black">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-fixed"></div>
     
-    <!-- Floating particles/shapes -->
-    <div class="absolute top-1/4 right-10 w-64 h-64 bg-red-600 rounded-full blur-[120px] opacity-40 animate-[pulseGlow_4s_ease-in-out_infinite]"></div>
+    <!-- Dark Overlay so text is clear -->
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
     
-    <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center" data-aos="fade-up">
-        <span class="inline-block px-4 py-1 bg-white/10 backdrop-blur-md rounded-full text-red-400 font-bold tracking-[0.2em] uppercase text-xs mb-6 border border-white/10">Reach Out</span>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight font-['Rajdhani'] drop-shadow-2xl">
-            Let's <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Connect</span>
-        </h1>
-        
-        <div class="flex items-center justify-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-slate-300">
-            <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors flex items-center gap-2"><i class="fas fa-home"></i> Home</a>
-            <span class="text-slate-500">/</span>
-            <span class="text-white">Contact Us</span>
+    <div class="container mx-auto px-4 lg:px-8 relative z-10" data-aos="fade-up">
+        <div class="flex flex-col items-start gap-3">
+            <!-- Left Side: Title -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg m-0">
+                Contact Us
+            </h1>
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-white drop-shadow-md mt-2">
+                <a href="{{ route('home') }}" class="hover:text-red-400 transition-colors border-b border-transparent hover:border-red-400 pb-0.5">HOME</a>
+                <i class="fas fa-arrow-right text-red-500"></i>
+                <a href="{{ route('contact') }}" class="hover:text-red-400 transition-colors border-b border-white pb-0.5">CONTACT US</a>
+            </div>
         </div>
-    </div>
-    
-    <!-- Wave separator -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-        <svg class="relative block w-full h-[50px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,123.59,190.27,110.15,236.42,99.8,279.79,78.36,321.39,56.44Z" class="fill-slate-50"></path>
-        </svg>
     </div>
 </div>
 

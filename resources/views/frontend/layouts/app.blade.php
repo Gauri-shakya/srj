@@ -247,6 +247,39 @@
             });
         });
     </script>
+    <!-- Global Toast Notification -->
+    @if(session('success'))
+        <div id="success-toast" class="fixed bottom-6 right-6 z-[99999] bg-green-500 text-white px-5 py-4 rounded-xl shadow-[0_10px_40px_rgba(34,197,94,0.3)] flex items-center gap-4 transform translate-y-20 opacity-0 transition-all duration-500 ease-out">
+            <div class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center shrink-0">
+                <i class="fas fa-check text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm tracking-wide">SUCCESS</h4>
+                <p class="text-sm text-green-50 mt-0.5">{{ session('success') }}</p>
+            </div>
+            <button onclick="document.getElementById('success-toast').style.display='none'" class="ml-4 text-white/70 hover:text-white transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toast = document.getElementById('success-toast');
+                if(toast) {
+                    // Slide up and fade in
+                    setTimeout(() => {
+                        toast.classList.remove('translate-y-20', 'opacity-0');
+                    }, 100);
+                    
+                    // Disappear after 5 seconds
+                    setTimeout(() => {
+                        toast.classList.add('opacity-0', 'translate-y-20');
+                        setTimeout(() => toast.remove(), 500);
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+    
     @stack('scripts')
 </body>
 </html>

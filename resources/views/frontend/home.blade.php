@@ -93,7 +93,7 @@
 @endpush
 
 <!-- Stats Section -->
-<section class="py-12 bg-white relative z-20 -mt-16 mb-16 lg:mb-24 mx-4 lg:mx-auto max-w-7xl rounded-2xl shadow-[0_20px_50px_rgba(10,22,40,0.06)] border border-slate-100">
+<section class="py-10 bg-white relative z-20 -mt-16 mb-8 mx-4 lg:mx-auto max-w-7xl rounded-2xl shadow-[0_20px_50px_rgba(10,22,40,0.06)] border border-slate-100">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
             <div class="text-center px-4" data-aos="fade-up" data-aos-delay="100">
@@ -117,7 +117,7 @@
 </section>
 
 <!-- About Section -->
-<section class="py-24 relative overflow-hidden bg-slate-50">
+<section class="py-16 relative overflow-hidden bg-slate-50">
     <!-- Abstract Shapes -->
     <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-red-50 rounded-full blur-[100px] opacity-60 -translate-y-1/2 translate-x-1/3"></div>
     <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50 rounded-full blur-[80px] opacity-60 translate-y-1/2 -translate-x-1/3"></div>
@@ -151,47 +151,35 @@
             </div>
             
             <!-- Right: Text Content -->
-            <div class="space-y-8" data-aos="fade-left">
+            <div class="space-y-5" data-aos="fade-left">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-xs tracking-[0.2em] uppercase mb-4 border border-red-100">
-                        <i class="fas fa-fire-alt"></i> About SRJ Heat Exchangers
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-red-600 font-bold text-[10px] sm:text-xs tracking-wider uppercase mb-3 border border-red-100">
+                        <i class="fas fa-fire-alt"></i> 17+ Years Experience as a Plate Heat Exchanger Manufacturer in India
                     </div>
-                    <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#0a1628] leading-[1.1]">
-                        Pioneering <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400">Thermal</span> Engineering in India.
+                    <h2 class="text-3xl lg:text-4xl font-black text-[#0a1628] leading-[1.2]">
+                        Plate Heat Exchanger Manufacturers & <br class="hidden lg:block">Plate Heat Exchanger Supplier in India
                     </h2>
                 </div>
                 
-                <p class="text-lg text-slate-600 leading-relaxed text-justify">
-                    SRJ Heatt Exchangers India Pvt. Ltd. stands as a premier manufacturer and supplier of industrial Plate Heat Exchangers. Backed by <strong class="text-[#0a1628]">17+ years of engineering excellence</strong>, we deliver high-performance PHE systems globally, tailored for rigorous industrial demands.
-                </p>
+                <div class="text-sm sm:text-base text-slate-600 leading-relaxed text-justify space-y-3 font-medium">
+                    <p>
+                        <strong class="text-[#0a1628]">SRJ Heatt Exchangers India Pvt. Ltd.</strong> is one of the leading plate heat exchanger manufacturers and plate heat exchanger supplier in India with more than 17 years of experience in designing and manufacturing industrial plate heat exchangers and plate heat exchanger PHE systems for multiple industries.
+                    </p>
+                    <p>
+                        With advanced engineering design and in-house manufacturing facilities, we produce high-quality plate heat exchanger gasket, plate heat exchanger plates, and complete plate heat exchanger PHE solutions designed for HVAC systems, industrial cooling, and plate heat exchanger chiller applications. We produce precision-engineered PHE plates and gaskets that meet consistent quality, performance, and durability standards across industrial applications.
+                    </p>
+                    <p>
+                        We manufacture OEM compatible replacement parts and supply industrial plate heat exchangers used in HVAC, food processing, dairy plants, and energy systems including plate heat exchanger for milk pasteurization and plate heat exchanger in milk processing industries. Our plate heat exchangers are designed for high thermal efficiency, competitive plate heat exchanger price, easy plate heat exchanger cleaning, and reliable operation across HVAC, power, chemical, pharmaceutical, and food processing industries.
+                    </p>
+                   
+                </div>
                 
-                <ul class="space-y-4">
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center text-red-600 shrink-0">
-                            <i class="fas fa-check text-xs"></i>
-                        </div>
-                        <p class="text-slate-700 font-medium">In-house advanced manufacturing facility with modern CNC tooling.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center text-red-600 shrink-0">
-                            <i class="fas fa-check text-xs"></i>
-                        </div>
-                        <p class="text-slate-700 font-medium">OEM-compatible replacement parts for all major global brands.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center text-red-600 shrink-0">
-                            <i class="fas fa-check text-xs"></i>
-                        </div>
-                        <p class="text-slate-700 font-medium">Strict ISO 9001:2015 certified quality control and testing.</p>
-                    </li>
-                </ul>
-                
-                <div class="pt-6">
-                    <a href="{{ route('about') }}" class="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-bold tracking-widest uppercase text-white transition-all duration-300 bg-[#0a1628] rounded-full overflow-hidden shadow-lg hover:shadow-[0_0_20px_rgba(10,22,40,0.4)] hover:-translate-y-1">
+                <div class="pt-4">
+                    <a href="{{ route('about') }}" class="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-bold tracking-widest uppercase text-white transition-all duration-300 bg-[#0a1628] rounded-full overflow-hidden shadow-lg hover:shadow-[0_0_20px_rgba(10,22,40,0.4)] hover:-translate-y-1">
                         <span class="absolute inset-0 w-full h-full transition-all duration-300 ease-out translate-x-full bg-red-600 group-hover:translate-x-0"></span>
-                        <span class="relative flex items-center gap-3">
+                        <span class="relative flex items-center gap-2">
                             Discover Our Story
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right text-xs"></i>
                         </span>
                     </a>
                 </div>
