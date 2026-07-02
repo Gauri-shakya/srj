@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\SrjHeatExchangersController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -11,6 +12,7 @@ Route::get('/about', fn() => view('frontend.about'))->name('about');
 Route::get('/contact', fn() => view('frontend.contact'))->name('contact');
 Route::post('/contact', fn() => back()->with('success', 'Thank you! Your message has been sent successfully.'))->name('contact.store');
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
+Route::get('/srj-heat-exchangers', [SrjHeatExchangersController::class, 'index'])->name('srj-heat-exchangers');
 Route::get('/products', fn() => 'Products')->name('products.index');
 Route::get('/product/{slug}', function ($slug) {
     $product = \App\Models\Product::with('category')->where('slug', $slug)->firstOrFail();

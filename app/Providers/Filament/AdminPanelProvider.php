@@ -76,107 +76,89 @@ class AdminPanelProvider extends PanelProvider
                             border-left: 4px solid #dc2626 !important;
                             border-radius: 0 8px 8px 0 !important;
                             box-shadow: 0 2px 5px rgba(0,0,0,0.03) !important;
-                        }
-                        
-                        /* Exact Match Floating Card Login UI */
+                        }                        /* Simple & Clean Login Page */
                         .fi-simple-layout {
-                            background: #e2e8f0 !important; /* Soft Slate background */
+                            background-color: #f8fafc !important; /* Soft off-white background */
                             display: flex !important;
                             align-items: center !important;
                             justify-content: center !important;
                             min-height: 100vh !important;
-                            padding: 1rem !important;
-                            max-width: 100% !important;
-                            margin: 0 !important;
+                            padding: 1.5rem !important;
                         }
                         
-                        /* The Floating Card */
-                        .fi-simple-main {
-                            display: flex !important;
-                            flex-direction: row !important;
-                            background: white !important;
-                            border-radius: 1.5rem !important;
-                            overflow: hidden !important;
-                            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-                            width: 100% !important;
-                            max-width: 1000px !important;
-                            min-height: 600px !important;
-                            padding: 0 !important;
-                        }
-                        
-                        /* Left Section (Abstract Graphics & Text) - Desktop Only */
-                        .fi-simple-main::before {
-                            content: "";
-                            display: none;
-                        }
-                        
-                        @media (min-width: 1024px) {
-                            .fi-simple-main::before {
-                                display: block;
-                                flex: 1.1;
-                                background-color: #dc2626;
-                                /* Beautiful gradient + the exact SVG mockup you provided */
-                                background-image: 
-                                    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 450 600\'%3E%3Cpath d=\'M-50 100 C 100 -50, 200 200, 400 50\' stroke=\'rgba(255,255,255,0.2)\' stroke-width=\'2\' fill=\'none\'/%3E%3Cpath d=\'M-50 120 C 100 -30, 200 220, 400 70\' stroke=\'rgba(255,255,255,0.1)\' stroke-width=\'2\' fill=\'none\'/%3E%3Cpath d=\'M100 600 C 50 400, 350 400, 200 200\' stroke=\'rgba(255,255,255,0.2)\' stroke-width=\'2\' fill=\'none\'/%3E%3Cpath d=\'M120 600 C 70 420, 370 420, 220 220\' stroke=\'rgba(255,255,255,0.1)\' stroke-width=\'2\' fill=\'none\'/%3E%3Cpath d=\'M 100 100 L 100 120 M 90 110 L 110 110\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\'/%3E%3Cpath d=\'M 150 400 L 150 420 M 140 410 L 160 410\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\'/%3E%3Ccircle cx=\'180\' cy=\'160\' r=\'6\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\' fill=\'none\'/%3E%3Ccircle cx=\'60\' cy=\'480\' r=\'6\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\' fill=\'none\'/%3E%3Cg fill=\'rgba(255,255,255,0.5)\'%3E%3Ccircle cx=\'380\' cy=\'100\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'100\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'100\' r=\'2\'/%3E%3Ccircle cx=\'380\' cy=\'115\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'115\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'115\' r=\'2\'/%3E%3Ccircle cx=\'380\' cy=\'130\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'130\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'130\' r=\'2\'/%3E%3Ccircle cx=\'380\' cy=\'145\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'145\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'145\' r=\'2\'/%3E%3Ccircle cx=\'380\' cy=\'160\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'160\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'160\' r=\'2\'/%3E%3Ccircle cx=\'380\' cy=\'175\' r=\'2\'/%3E%3Ccircle cx=\'390\' cy=\'175\' r=\'2\'/%3E%3Ccircle cx=\'400\' cy=\'175\' r=\'2\'/%3E%3C/g%3E%3Ctext x=\'50\' y=\'280\' font-family=\'sans-serif\' font-size=\'42\' font-weight=\'800\' fill=\'white\'%3EWelcome back!%3C/text%3E%3Ctext x=\'50\' y=\'325\' font-family=\'sans-serif\' font-size=\'18\' font-weight=\'400\' fill=\'rgba(255,255,255,0.9)\'%3EYou can sign in to access with your%3C/text%3E%3Ctext x=\'50\' y=\'350\' font-family=\'sans-serif\' font-size=\'18\' font-weight=\'400\' fill=\'rgba(255,255,255,0.9)\'%3Eexisting account.%3C/text%3E%3C/svg%3E"),
-                                    linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-                                background-size: cover;
-                                background-position: center;
-                                background-repeat: no-repeat;
-                            }
-                        }
-
-                        /* Right Form Section */
                         .fi-simple-main-ctn {
-                            flex: 1 !important;
-                            padding: 3rem !important;
-                            background: white !important;
-                            box-shadow: none !important;
-                            border: none !important;
-                            display: flex !important;
-                            flex-direction: column !important;
-                            justify-content: center !important;
+                            background-color: #ffffff !important; /* Pure white card */
+                            border-radius: 1rem !important;
+                            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+                            width: 100% !important;
+                            max-width: 550px !important; /* Increased width */
+                            padding: 2rem !important; /* Reduced padding */
+                            border: 1px solid #f1f5f9 !important;
+                            margin: 0 auto !important;
                         }
 
-                        /* Form Headings */
+                        /* Clean Logo */
                         .fi-simple-main-ctn .fi-logo {
-                            font-size: 2.25rem !important;
-                            color: #4b5563 !important;
+                            font-size: 1.5rem !important; /* Slightly smaller logo */
+                            color: #111827 !important;
                             font-weight: 800 !important;
-                            margin-bottom: 2rem !important;
-                            justify-content: flex-start !important;
+                            justify-content: center !important;
+                            margin-bottom: 1rem !important; /* Reduced margin */
                         }
                         
-                        .fi-simple-main-ctn h2 {
-                            display: none !important; /* Hide default "Sign in to your account" text if present */
+                        /* Hide the default "Sign in" sub-heading if it takes too much space */
+                        .fi-simple-main-ctn h2.fi-header-heading {
+                            font-size: 1.25rem !important;
+                            margin-bottom: 0.5rem !important;
                         }
 
-                        /* Pill-shaped Inputs */
-                        .fi-simple-main-ctn .fi-input-wrapper {
-                            border-radius: 9999px !important;
-                            overflow: hidden !important;
-                            background-color: white !important;
+                        /* Fix default text colors */
+                        .fi-simple-main-ctn h2,
+                        .fi-simple-main-ctn p,
+                        .fi-simple-main-ctn label span {
+                            color: #374151 !important;
                         }
-                        
+
+                        /* Input fields */
                         .fi-simple-main-ctn input {
-                            border-radius: 9999px !important;
-                            padding: 0.85rem 1.5rem !important;
-                            background-color: white !important;
-                        }
-
-                        /* Pill-shaped Button */
-                        .fi-simple-main-ctn button[type="submit"] {
-                            border-radius: 9999px !important;
-                            background-color: #dc2626 !important;
-                            padding-top: 0.85rem !important;
-                            padding-bottom: 0.85rem !important;
-                            font-size: 1.1rem !important;
-                            font-weight: 600 !important;
-                            margin-top: 1rem !important;
-                            transition: background-color 0.3s;
+                            border-radius: 0.5rem !important;
+                            border: 1px solid #e2e8f0 !important;
+                            padding: 0.6rem 1rem !important; /* Reduced padding */
+                            background-color: #ffffff !important;
+                            color: #111827 !important;
+                            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
                         }
                         
+                        .fi-simple-main-ctn input:focus {
+                            border-color: #dc2626 !important;
+                            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+                            outline: none !important;
+                        }
+
+                        /* Standard Red Button */
+                        .fi-simple-main-ctn button[type="submit"] {
+                            border-radius: 0.5rem !important;
+                            background-color: #dc2626 !important;
+                            color: white !important;
+                            font-weight: 600 !important;
+                            font-size: 1rem !important;
+                            padding: 0.75rem 1rem !important;
+                            margin-top: 1rem !important;
+                            border: none !important;
+                            transition: background-color 0.2s;
+                        }
+
                         .fi-simple-main-ctn button[type="submit"]:hover {
                             background-color: #b91c1c !important;
+                        }
+                        
+                        /* Fix links */
+                        .fi-simple-main-ctn a {
+                            color: #dc2626 !important;
+                        }
+                        
+                        .fi-simple-main-ctn a:hover {
+                            color: #991b1b !important;
                         }
                     </style>
                 ')

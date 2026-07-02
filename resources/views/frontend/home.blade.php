@@ -190,7 +190,7 @@
 </section>
 
 <!-- Services / Features Section -->
-<section class="py-24 bg-white relative">
+<section class="py-24 bg-slate-50 relative">
     <div class="container mx-auto px-4 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <span class="text-red-600 font-bold tracking-[0.2em] uppercase text-xs">Our Expertise</span>
@@ -200,18 +200,18 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($services as $index => $service)
-            <div class="group bg-slate-50 rounded-2xl p-8 hover:bg-[#0a1628] transition-colors duration-500 border border-slate-100 hover:border-[#0a1628] relative overflow-hidden flex flex-col items-start h-full" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                <!-- Abstract Glow on Hover -->
-                <div class="absolute -right-20 -top-20 w-40 h-40 bg-red-600 rounded-full blur-[50px] opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div class="group bg-white rounded-2xl p-8 transition-all duration-500 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.08)] hover:border-red-100 hover:-translate-y-2 relative overflow-hidden flex flex-col items-start h-full" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                <!-- Top accent line -->
+                <div class="absolute top-0 left-0 w-0 h-1 bg-red-600 transition-all duration-500 group-hover:w-full"></div>
                 
-                <div class="w-16 h-16 bg-white group-hover:bg-red-600 rounded-xl flex items-center justify-center text-[#0a1628] group-hover:text-white text-2xl mb-8 shadow-sm group-hover:shadow-lg group-hover:shadow-red-600/40 transition-all duration-500 group-hover:-translate-y-2 group-hover:rotate-6">
+                <div class="w-16 h-16 bg-slate-50 group-hover:bg-red-600 rounded-2xl flex items-center justify-center text-[#0a1628] group-hover:text-white text-2xl mb-8 shadow-sm group-hover:shadow-lg group-hover:shadow-red-600/40 transition-all duration-500 group-hover:scale-110">
                     <i class="{{ $service->icon }}"></i>
                 </div>
                 
-                <h3 class="text-xl font-bold text-[#0a1628] mb-4 group-hover:text-white transition-colors duration-300">{{ $service->title }}</h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8 group-hover:text-slate-300 transition-colors duration-300 flex-grow">{{ $service->short_description }}</p>
+                <h3 class="text-xl font-bold text-[#0a1628] mb-4 transition-colors duration-300 group-hover:text-red-600">{{ $service->title }}</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8 transition-colors duration-300 flex-grow">{{ $service->short_description }}</p>
                 
-                <div class="w-12 h-1 bg-red-100 group-hover:bg-red-600 rounded-full transition-all duration-500 mt-auto"></div>
+                <div class="w-12 h-1 bg-red-100 group-hover:bg-red-600 group-hover:w-20 rounded-full transition-all duration-500 mt-auto"></div>
             </div>
             @endforeach
         </div>
@@ -219,91 +219,102 @@
 </section>
 
 <!-- Why Partner With Us / Leading Manufacturers Section -->
-<section class="py-20 bg-[#405063] text-white relative overflow-hidden">
-    <!-- Abstract circular background lines (simulated with CSS/SVG) -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <circle cx="0" cy="50" r="40" fill="none" stroke="white" stroke-width="0.2" />
-            <circle cx="0" cy="50" r="60" fill="none" stroke="white" stroke-width="0.2" />
-            <circle cx="0" cy="50" r="80" fill="none" stroke="white" stroke-width="0.2" />
-            <circle cx="0" cy="50" r="100" fill="none" stroke="white" stroke-width="0.2" />
-            <circle cx="0" cy="50" r="120" fill="none" stroke="white" stroke-width="0.2" />
-        </svg>
+<section class="py-24 relative overflow-hidden bg-slate-50">
+    <!-- Background Image with Light Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000" alt="Industrial Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-slate-50/90 backdrop-blur-sm"></div>
     </div>
     
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
-        <div class="mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight font-['Rajdhani']">
-                Why We Are the Leading <br/>
-                <span class="text-red-500">Plate Heat Exchanger</span> Manufacturers <span class="text-red-500">in India</span>
-            </h2>
-            <p class="text-slate-200 text-sm md:text-base max-w-3xl leading-relaxed font-light">
-                We are a trusted plate heat exchanger supplier providing high quality plate heat exchangers, plate heat exchanger gasket solutions, and precision engineered PHE components for industrial applications in India.
-            </p>
-        </div>
-
-        <div class="grid lg:grid-cols-12 gap-10 items-center">
-            <!-- Left: List Items (Takes up 7 cols) -->
-            <div class="lg:col-span-7 space-y-4" data-aos="fade-right">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            
+            <!-- Left: Text Content (5 cols) -->
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-32" data-aos="fade-right">
+                <span class="inline-block px-4 py-1.5 bg-white text-[#0a1628] font-bold tracking-[0.2em] uppercase text-xs rounded-full shadow-sm border border-slate-200">
+                    Why Choose Us
+                </span>
                 
-                <!-- Item 1 -->
-                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
-                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
-                        01
-                    </div>
-                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
-                        Our industrial plate heat exchangers use precision plate thickness from 0.4mm to 1.0mm ensuring reliable heat transfer and long term performance.
-                    </p>
-                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-[#0a1628] leading-[1.1] font-['Rajdhani']">
+                    Why We Are the Leading <br/>
+                    <span class="text-red-600">Plate Heat Exchanger</span> Manufacturers in India
+                </h2>
                 
-                <!-- Item 2 -->
-                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
-                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
-                        02
-                    </div>
-                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
-                        Strict quality control ensures smooth plate heat exchanger gasket surfaces for reliable sealing and efficient thermal performance.
-                    </p>
+                <p class="text-slate-600 text-lg leading-relaxed font-medium">
+                    We are a trusted plate heat exchanger supplier providing high quality plate heat exchangers, plate heat exchanger gasket solutions, and precision engineered PHE components for industrial applications in India.
+                </p>
+                
+                <div class="pt-4">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 font-bold text-red-600 hover:text-[#0a1628] transition-colors uppercase tracking-wider text-sm">
+                        Partner With Us <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-
-                <!-- Item 3 -->
-                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
-                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
-                        03
-                    </div>
-                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
-                        Advanced engineering software supports accurate plate heat exchanger drawing and customized design for industrial applications.
-                    </p>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
-                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
-                        04
-                    </div>
-                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
-                        Our in-house manufacturing facility produces durable plate heat exchangers designed for HVAC systems and plate heat exchanger chiller applications.
-                    </p>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="flex items-center gap-4 py-2 border-b border-white/10 group">
-                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center text-white text-xl font-bold shrink-0">
-                        05
-                    </div>
-                    <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
-                        Each batch is tested for quality and easy plate heat exchanger cleaning ensuring reliable operation and long service life.
-                    </p>
-                </div>
-
             </div>
             
-            <!-- Right: Image (Takes up 5 cols) -->
-            <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-delay="200">
-                <div class="rounded-xl overflow-hidden shadow-2xl bg-white/10 p-1">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800" alt="Warehouse Engineering" class="rounded-lg object-cover w-full h-[300px] md:h-[400px]">
+            <!-- Right: Grid of Cards (7 cols) -->
+            <div class="lg:col-span-7" data-aos="fade-left">
+                <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(220,38,38,0.08)] transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-[#0a1628] rounded-xl flex items-center justify-center text-white text-xl mb-5 group-hover:bg-red-600 transition-colors">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#0a1628] mb-3">Precision Thickness</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Our industrial plate heat exchangers use precision plate thickness from 0.4mm to 1.0mm ensuring reliable heat transfer and long term performance.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(220,38,38,0.08)] transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-[#0a1628] rounded-xl flex items-center justify-center text-white text-xl mb-5 group-hover:bg-red-600 transition-colors">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#0a1628] mb-3">Strict Quality Control</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Strict quality control ensures smooth plate heat exchanger gasket surfaces for reliable sealing and efficient thermal performance.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(220,38,38,0.08)] transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-[#0a1628] rounded-xl flex items-center justify-center text-white text-xl mb-5 group-hover:bg-red-600 transition-colors">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#0a1628] mb-3">Advanced Engineering</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Advanced engineering software supports accurate plate heat exchanger drawing and customized design for industrial applications.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(220,38,38,0.08)] transition-all duration-300 group">
+                        <div class="w-12 h-12 bg-[#0a1628] rounded-xl flex items-center justify-center text-white text-xl mb-5 group-hover:bg-red-600 transition-colors">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#0a1628] mb-3">In-House Manufacturing</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Our in-house manufacturing facility produces durable plate heat exchangers designed for HVAC systems and plate heat exchanger chiller applications.
+                        </p>
+                    </div>
+
+                    <!-- Card 5 (Full Width) -->
+                    <div class="sm:col-span-2 bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(220,38,38,0.08)] transition-all duration-300 group flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="w-14 h-14 bg-[#0a1628] rounded-xl flex items-center justify-center text-white text-2xl shrink-0 group-hover:bg-red-600 transition-colors">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-[#0a1628] mb-2">Thorough Testing & Reliability</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Each batch is tested for quality and easy plate heat exchanger cleaning ensuring reliable operation and long service life.
+                            </p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
@@ -477,8 +488,93 @@
             },
         }
     });
+
+    const certSwiper = new Swiper('.certSwiper', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.cert-pagination',
+            clickable: true,
+            bulletClass: 'swiper-pagination-bullet !bg-slate-300 !w-2.5 !h-2.5 !opacity-100',
+            bulletActiveClass: 'swiper-pagination-bullet-active !bg-red-600 !w-3 !h-3',
+        },
+        navigation: {
+            nextEl: '.cert-next',
+            prevEl: '.cert-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            },
+        }
+    });
 </script>
 @endpush
+
+<!-- Certifications & Awards Section -->
+<section class="py-20 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black text-[#0a1628]">
+                Our <span class="text-red-600">Certifications</span> & Awards
+            </h2>
+        </div>
+        
+        <div class="relative px-2 sm:px-12 max-w-7xl mx-auto">
+            <div class="swiper certSwiper !pb-14" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper items-center">
+                    @if(isset($certificates) && $certificates->count() > 0)
+                        @foreach($certificates as $cert)
+                        <div class="swiper-slide">
+                            <a href="{{ Storage::url($cert->image) }}" data-fancybox="certificates" data-caption="{{ $cert->title }}" class="block bg-white p-2 md:p-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(220,38,38,0.1)] hover:border-red-100 transition-all duration-300 flex items-center justify-center group cursor-zoom-in aspect-[4/5]">
+                                <img src="{{ Storage::url($cert->image) }}" alt="{{ $cert->title }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            </a>
+                        </div>
+                        @endforeach
+                    @else
+                        @php
+                            $placeholderCertificates = [
+                                ['title' => 'Dairy Industry Award', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=Dairy+Industry\nCertificate'],
+                                ['title' => 'Trophy 1', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=Excellence\nTrophy'],
+                                ['title' => 'ISO 9001:2015', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=ISO+9001:2015\nCertificate'],
+                                ['title' => 'IndiaMart Trust Seal', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=IndiaMart\nTrust+Seal'],
+                                ['title' => 'Trophy 2', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=Quality\nTrophy'],
+                                ['title' => 'Award 3', 'img' => 'https://placehold.co/800x1000/ffffff/333333?text=Best\nManufacturer'],
+                            ];
+                        @endphp
+                        @foreach($placeholderCertificates as $cert)
+                        <div class="swiper-slide">
+                            <a href="{{ $cert['img'] }}" data-fancybox="certificates" data-caption="{{ $cert['title'] }}" class="block bg-white p-2 md:p-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(220,38,38,0.1)] hover:border-red-100 transition-all duration-300 flex items-center justify-center group cursor-zoom-in aspect-[4/5]">
+                                <img src="{{ $cert['img'] }}" alt="{{ $cert['title'] }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                            </a>
+                        </div>
+                        @endforeach
+                    @endif
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination cert-pagination flex items-center justify-center gap-1.5"></div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="swiper-button-prev cert-prev !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -left-4 font-black transition-colors"></div>
+            <div class="swiper-button-next cert-next !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -right-4 font-black transition-colors"></div>
+        </div>
+    </div>
+</section>
 
 <!-- Lead Generation CTA Section -->
 <section class="py-24 relative overflow-hidden bg-[#0a1628] mt-10" data-aos="fade-up">

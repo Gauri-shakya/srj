@@ -43,6 +43,10 @@ class HomeController extends Controller
             (object)['name' => 'Anil Jain', 'company' => 'Dairy Processing Plant', 'rating' => 5, 'review' => 'Best PHE manufacturers in India. Their replacement gaskets fit perfectly and stopped our leakage issues instantly.'],
         ]);
         
-        return view('frontend.home', compact('sliders', 'services', 'testimonials'));
+        $certificates = \App\Models\AwardAndAchievement::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
+        
+        return view('frontend.home', compact('sliders', 'services', 'testimonials', 'certificates'));
     }
 }

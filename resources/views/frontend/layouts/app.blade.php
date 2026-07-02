@@ -19,6 +19,8 @@
     
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
@@ -66,18 +68,18 @@
                     <li><a href="{{ route('about') }}">About Us</a></li>
                     <li class="has-dropdown">
                         <a href="{{ route('products.index') }}" class="flex items-center justify-between lg:justify-start gap-1">Our Products <i class="fas fa-chevron-down text-[10px] text-red-600"></i></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu lg:w-max lg:min-w-[250px]">
                             @foreach(App\Models\Product::where('is_active', true)->get() as $product)
-                                <li><a href="{{ route('products.show', $product->slug) }}">{{ $product->name }}</a></li>
+                                <li><a href="{{ route('products.show', $product->slug) }}" class="whitespace-nowrap text-[13px] md:text-[14px] w-full block">{{ $product->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="{{ route('home') }}">SRJ Heat Exchangers</a></li>
+                    <li><a href="{{ route('srj-heat-exchangers') }}">SRJ Heat Exchangers</a></li>
                     <li class="has-dropdown">
                         <a href="{{ route('replacement-parts') }}" class="flex items-center justify-between lg:justify-start gap-1">Replacement Parts <i class="fas fa-chevron-down text-[10px] text-red-600"></i></a>
-                        <ul class="dropdown-menu grid grid-cols-1 sm:grid-cols-2 gap-x-4 lg:min-w-[400px] p-2 lg:p-4">
+                        <ul class="dropdown-menu lg:w-max min-w-[250px]">
                             @foreach(App\Models\ReplacementBrand::where('is_active', true)->orderBy('order')->get() as $brand)
-                                <li><a href="{{ route('replacement-brand', $brand->slug) }}" class="whitespace-nowrap">{{ $brand->name }}</a></li>
+                                <li><a href="{{ route('replacement-brand', $brand->slug) }}" class="whitespace-nowrap text-[13px] md:text-[14px] w-full block">{{ $brand->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -279,6 +281,13 @@
             });
         </script>
     @endif
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
     
     @stack('scripts')
 </body>
