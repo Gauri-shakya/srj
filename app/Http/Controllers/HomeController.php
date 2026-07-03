@@ -38,10 +38,14 @@ class HomeController extends Controller
             (object)['title' => 'Installation Support', 'short_description' => 'Technical guidance on PHE installation, working principles, and drawings.', 'icon' => 'fas fa-hard-hat'],
         ]);
         
-        $testimonials = collect([
-            (object)['name' => 'Deepak Tyagi', 'company' => 'HVAC Systems', 'rating' => 5, 'review' => 'Excellent thermal efficiency and durability. The SRJ team provided great technical support during installation.'],
-            (object)['name' => 'Anil Jain', 'company' => 'Dairy Processing Plant', 'rating' => 5, 'review' => 'Best PHE manufacturers in India. Their replacement gaskets fit perfectly and stopped our leakage issues instantly.'],
-        ]);
+        $testimonials = \App\Models\Testimonial::where('is_active', true)->latest()->get();
+
+        if ($testimonials->isEmpty()) {
+            $testimonials = collect([
+                (object)['name' => 'Deepak Tyagi', 'company' => 'HVAC Systems', 'rating' => 5, 'review' => 'Excellent thermal efficiency and durability. The SRJ team provided great technical support during installation.'],
+                (object)['name' => 'Anil Jain', 'company' => 'Dairy Processing Plant', 'rating' => 5, 'review' => 'Best PHE manufacturers in India. Their replacement gaskets fit perfectly and stopped our leakage issues instantly.'],
+            ]);
+        }
         
         $certificates = \App\Models\AwardAndAchievement::where('is_active', true)
             ->orderBy('sort_order')

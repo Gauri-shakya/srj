@@ -430,62 +430,145 @@
 <!-- Testimonials Section -->
 <section class="py-24 bg-slate-50 relative overflow-hidden">
     <!-- Decorative background elements -->
-    <div class="absolute top-0 left-0 w-full h-1/2 bg-white z-0"></div>
     <div class="absolute right-0 bottom-0 opacity-5 w-64 h-64 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMwYTE2MjgiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')] z-0"></div>
 
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
         <div class="text-center mb-16" data-aos="fade-up">
             <span class="text-red-600 font-bold tracking-[0.2em] uppercase text-xs">Testimonials</span>
-            <h2 class="text-4xl md:text-5xl font-black text-[#0a1628] mt-3">Trusted by Industry Leaders</h2>
+            <h2 class="text-4xl md:text-5xl font-black text-[#0a1628] mt-3">Customer Feedback</h2>
+            <p class="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">
+                Our customers inspire us every day! Here's what they're saying about their experience and the difference our products make.
+            </p>
         </div>
         
-        <div class="swiper testimonialSwiper !pb-12" data-aos="fade-up" data-aos-delay="200">
-            <div class="swiper-wrapper">
-                @foreach($testimonials as $testimonial)
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white p-10 rounded-3xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-100 relative group h-full flex flex-col transition-all duration-300 hover:shadow-[0_20px_50px_-10px_rgba(10,22,40,0.1)] hover:-translate-y-1">
-                        <i class="fas fa-quote-right text-5xl text-slate-100 absolute top-10 right-10 group-hover:text-red-50 transition-colors duration-300"></i>
-                        <div class="flex text-amber-400 mb-6 text-sm gap-1">
-                            @for($i=1; $i<=5; $i++)
-                                <i class="fas fa-star {{ $i <= $testimonial->rating ? '' : 'text-slate-200' }}"></i>
-                            @endfor
-                        </div>
-                        <p class="text-slate-600 text-lg leading-relaxed flex-grow font-light">"{{ $testimonial->review }}"</p>
-                        
-                        <div class="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100">
-                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#0a1628] to-red-600 text-white flex items-center justify-center font-bold text-xl shadow-md shrink-0">
-                                {{ substr($testimonial->name, 0, 1) }}
+        <div class="relative lg:px-12">
+            <!-- Swiper Navigation Arrows -->
+            <div class="swiper-button-prev !hidden lg:!flex !left-0 !w-12 !h-12 bg-white border border-slate-200 rounded-full shadow-lg !text-slate-800 after:!content-[''] hover:bg-slate-50 hover:!text-red-600 transition-colors flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+            </div>
+            <div class="swiper-button-next !hidden lg:!flex !right-0 !w-12 !h-12 bg-white border border-slate-200 rounded-full shadow-lg !text-slate-800 after:!content-[''] hover:bg-slate-50 hover:!text-red-600 transition-colors flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+            
+            <div class="swiper testimonialSwiper !pb-14" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    @foreach($testimonials as $testimonial)
+                    @php
+                        // Generate a color based on first letter for initials
+                        $colors = ['bg-red-600', 'bg-blue-600', 'bg-emerald-600', 'bg-amber-500', 'bg-purple-600', 'bg-pink-600'];
+                        $initial = strtoupper(substr($testimonial->name, 0, 1));
+                        $colorIndex = ord($initial) % count($colors);
+                        $avatarBg = $colors[$colorIndex];
+                    @endphp
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] flex flex-col h-[280px]">
+                            
+                            <!-- Header: Avatar, Name, Time, Google Logo -->
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex gap-3 items-center">
+                                    @if($testimonial->image)
+                                        <img src="{{ Storage::url($testimonial->image) }}" alt="{{ $testimonial->name }}" class="w-12 h-12 rounded-full object-cover">
+                                    @else
+                                        <div class="w-12 h-12 rounded-full {{ $avatarBg }} text-white flex items-center justify-center font-bold text-xl shrink-0">
+                                            {{ $initial }}
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <h4 class="font-bold text-blue-600 text-[15px] leading-tight">{{ $testimonial->name }}</h4>
+                                        <p class="text-[13px] text-slate-500 mt-0.5">{{ $testimonial->time_ago ?? 'A few days ago' }}</p>
+                                    </div>
+                                </div>
+                                <div class="shrink-0 mt-1">
+                                    <!-- Simple Google G Logo SVG -->
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                    </svg>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-[#0a1628] text-lg leading-tight">{{ $testimonial->name }}</h4>
-                                <p class="text-xs text-red-600 font-bold uppercase tracking-wider mt-1">{{ $testimonial->company }}</p>
+
+                            <!-- Stars -->
+                            <div class="flex text-amber-500 mb-3 gap-0.5 text-sm">
+                                @for($i=1; $i<=5; $i++)
+                                    <i class="fas fa-star {{ $i <= $testimonial->rating ? '' : 'text-slate-200' }}"></i>
+                                @endfor
                             </div>
+
+                            <!-- Review Text with Custom Scrollbar -->
+                            <div class="flex-grow overflow-y-auto pr-3 custom-scrollbar text-[14px] text-slate-700 leading-relaxed font-normal">
+                                {{ $testimonial->review }}
+                            </div>
+
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
+                
+                <!-- Swiper Pagination -->
+                <div class="swiper-pagination !-bottom-1"></div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Custom Scrollbar CSS -->
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+    }
+    
+    /* Pagination colors to match image */
+    .testimonialSwiper .swiper-pagination-bullet {
+        background: #94a3b8;
+        opacity: 0.5;
+    }
+    .testimonialSwiper .swiper-pagination-bullet-active {
+        background: #f97316; /* orange */
+        opacity: 1;
+    }
+</style>
+
 @push('scripts')
 <script>
     const testSwiper = new Swiper('.testimonialSwiper', {
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 20,
         loop: true,
         autoplay: {
-            delay: 3000,
+            delay: 3500,
             disableOnInteraction: false,
         },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
         breakpoints: {
-            768: {
+            640: {
                 slidesPerView: 2,
             },
             1024: {
                 slidesPerView: 3,
             },
+            1280: {
+                slidesPerView: 4,
+            }
         }
     });
 

@@ -5,16 +5,17 @@
 
 @section('content')
 <!-- Page Banner -->
-<section class="page-banner relative bg-brand-dark py-12 md:py-16">
-    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('{{ asset('images/pattern.png') }}');"></div>
+<section class="page-banner relative bg-[#0a1628] py-20 md:py-32">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000');"></div>
+    <div class="absolute inset-0 bg-[#0a1628] bg-opacity-75"></div>
     <div class="container relative z-10 text-center">
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Blog Detail</h1>
-        <div class="text-brand-red flex items-center justify-center gap-2 text-sm">
-            <a href="{{ route('home') }}" class="text-white hover:text-brand-red transition-colors">Home</a>
-            <span>/</span>
-            <a href="{{ route('blog.index') }}" class="text-white hover:text-brand-red transition-colors">Blog</a>
-            <span>/</span>
-            <span>{{ Str::limit($blog->title, 30) }}</span>
+        <h1 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Blog Detail</h1>
+        <div class="text-brand-red flex items-center justify-center gap-2 text-sm font-medium">
+            <a href="{{ route('home') }}" class="text-gray-300 hover:text-white transition-colors">Home</a>
+            <span class="text-gray-500">/</span>
+            <a href="{{ route('blog.index') }}" class="text-gray-300 hover:text-white transition-colors">Blog</a>
+            <span class="text-gray-500">/</span>
+            <span class="text-white">{{ Str::limit($blog->title, 40) }}</span>
         </div>
     </div>
 </section>
@@ -30,7 +31,7 @@
                     
                     <!-- Blog Image -->
                     <div class="rounded-lg overflow-hidden mb-8 relative">
-                        <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://placehold.co/1200x600?text=Blog+Image' }}" alt="{{ $blog->title }}" class="w-full h-auto object-cover max-h-[500px]">
+                        <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=1200' }}" alt="{{ $blog->title }}" class="w-full h-auto object-cover max-h-[500px]">
                         <div class="absolute top-4 left-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded shadow flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -76,7 +77,7 @@
                                 <div class="flex gap-4 group">
                                     <div class="w-20 h-20 flex-shrink-0 rounded overflow-hidden">
                                         <a href="{{ route('blog.show', $recent->slug) }}">
-                                            <img src="{{ $recent->image ? asset('storage/'.$recent->image) : 'https://placehold.co/150x150?text=Image' }}" alt="{{ $recent->title }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                            <img src="{{ $recent->image ? asset('storage/'.$recent->image) : 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=300' }}" alt="{{ $recent->title }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                         </a>
                                     </div>
                                     <div class="flex flex-col justify-center">

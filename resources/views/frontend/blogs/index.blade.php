@@ -5,10 +5,13 @@
 
 @section('content')
 <!-- Page Banner -->
-<section class="page-banner relative bg-brand-dark py-16 md:py-24">
-    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('{{ asset('images/pattern.png') }}');"></div>
+<section class="page-banner relative bg-[#0a1628] py-20 md:py-32">
+    <!-- Industrial Machine Dummy Image -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000');"></div>
+    <!-- Dark Overlay for better text readability -->
+    <div class="absolute inset-0 bg-[#0a1628] bg-opacity-75"></div>
     <div class="container relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Blog</h1>
+        <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">Our Blog</h1>
         <p class="text-gray-300 max-w-2xl mx-auto text-lg">Industry insights, news, and technical guides from SRJ Heat Exchangers.</p>
     </div>
 </section>
@@ -24,7 +27,7 @@
                     <!-- Image -->
                     <div class="relative h-60 overflow-hidden group">
                         <a href="{{ route('blog.show', $blog->slug) }}" class="block w-full h-full">
-                            <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://placehold.co/800x600?text=Blog+Image' }}" alt="{{ $blog->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $blog->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </a>
                         <div class="absolute top-4 right-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded shadow">
                             BLOG
