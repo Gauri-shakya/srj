@@ -15,9 +15,12 @@ class ReplacementBrandForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn ($operation, $state, $set) => $operation === 'create' ? $set('slug', \Illuminate\Support\Str::slug($state)) : null),
                 TextInput::make('slug')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 Textarea::make('description')
                     ->columnSpanFull(),
                 \Filament\Forms\Components\RichEditor::make('content')
@@ -25,6 +28,8 @@ class ReplacementBrandForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image(),
+                TextInput::make('alt_text')
+                    ->label('Image Alt Text'),
                 TextInput::make('order')
                     ->required()
                     ->numeric()

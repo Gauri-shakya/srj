@@ -130,7 +130,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* ==========================================================================
    Hero Section Animations
    ========================================================================== */
-.hero-section { position: relative; height: 90vh; min-height: 600px; max-height: 900px; width: 100%; overflow: hidden; background: #000; }
+.hero-section { position: relative; height: 95vh; min-height: 750px; max-height: 1000px; width: 100%; overflow: hidden; background: #000; }
 .heroSwiper { width: 100%; height: 100%; }
 .hero-slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.7) 50%, rgba(10,22,40,0.2) 100%); z-index: 2; }

@@ -19,7 +19,7 @@
                     <div class="card" style="padding: 0; overflow: hidden;">
                         <div style="height: 220px; overflow: hidden;">
                             @if($blog->image)
-                                <img src="{{ asset('storage/'.$blog->image) }}" alt="{{ $blog->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="{{ asset('storage/'.$blog->image) }}" alt="{{ $blog->alt_text ?? $blog->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                             @else
                                 <div style="width: 100%; height: 100%; background: var(--primary); display: flex; align-items: center; justify-content: center;">
                                     <i class="fas fa-newspaper fa-4x text-white"></i>
@@ -70,7 +70,7 @@
                         @foreach($featuredBlogs as $fblog)
                         <li style="margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
                             @if($fblog->image)
-                                <img src="{{ asset('storage/'.$fblog->image) }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                                <img src="{{ asset('storage/'.$fblog->image) }}" alt="{{ $fblog->alt_text ?? $fblog->title }}" loading="lazy" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
                             @else
                                 <div style="width: 60px; height: 60px; background: var(--primary); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
                                     <i class="fas fa-newspaper text-white"></i>

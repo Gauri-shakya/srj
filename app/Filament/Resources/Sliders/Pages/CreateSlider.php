@@ -19,4 +19,14 @@ class CreateSlider extends CreateRecord
             ->icon('heroicon-o-arrow-left'));
         return $actions;
     }
+
+    protected function getCreateFormAction(): \Filament\Actions\Action
+    {
+        return parent::getCreateFormAction()->color('success');
+    }
+
+    protected function getCreateAnotherFormAction(): \Filament\Actions\Action
+    {
+        return parent::getCreateAnotherFormAction()->hidden();
+    }
 }

@@ -32,7 +32,7 @@
                 <div class="card" style="padding: 0; overflow: hidden;">
                     <div style="height: 180px; overflow: hidden;">
                         @if($rblog->image)
-                            <img src="{{ asset('storage/'.$rblog->image) }}" alt="{{ $rblog->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="{{ asset('storage/'.$rblog->image) }}" alt="{{ $rblog->alt_text ?? $rblog->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                         @else
                             <div style="width: 100%; height: 100%; background: var(--primary); display: flex; align-items: center; justify-content: center;">
                                 <i class="fas fa-newspaper fa-3x text-white"></i>

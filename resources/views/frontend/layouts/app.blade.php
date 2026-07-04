@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -45,10 +45,11 @@
             </div>
             <div class="topbar-right flex items-center gap-4">
                 <span class="text-slate-400 text-xs uppercase tracking-widest mr-2">Follow Us</span>
-                <a href="{{ App\Models\Setting::get('facebook') }}" target="_blank" class="hover:text-blue-500"><i class="fab fa-facebook-f"></i></a>
-                <a href="{{ App\Models\Setting::get('twitter') }}" target="_blank" class="hover:text-sky-400"><i class="fab fa-twitter"></i></a>
-                <a href="{{ App\Models\Setting::get('instagram') }}" target="_blank" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-                <a href="{{ App\Models\Setting::get('youtube') }}" target="_blank" class="hover:text-red-500"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/srjheattexchangersindia/" target="_blank" class="hover:text-blue-500"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/SRJ_Heatt_India" target="_blank" class="hover:text-sky-400"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/srj_heatt_exchangers_india/" target="_blank" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@SRJHeattExchangersIndia" target="_blank" class="hover:text-red-500"><i class="fab fa-youtube"></i></a>
+                <a href="https://in.pinterest.com/SRJ_Heatt_India/" target="_blank" class="hover:text-red-600"><i class="fab fa-pinterest-p"></i></a>
             </div>
         </div>
     </div>
@@ -152,9 +153,9 @@
                         <li><a href="{{ route('about') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> About Us</a></li>
                         <li><a href="{{ route('blog.index') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Blog</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Cookies Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Legal Terms and Conditions</a></li>
+                        <li><a href="{{ route('privacy.policy') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Privacy Policy</a></li>
+                        <li><a href="{{ route('cookies.policy') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Cookies Policy</a></li>
+                        <li><a href="{{ route('terms.conditions') }}" class="hover:text-white transition-colors flex items-center gap-2 group"><i class="fas fa-chevron-right text-[10px] text-red-600 group-hover:translate-x-1 transition-transform"></i> Legal Terms and Conditions</a></li>
                     </ul>
                 </div>
 
@@ -181,13 +182,12 @@
                         </p>
                     </div>
                     
-                    <!-- Social Icons -->
                     <div class="flex flex-wrap gap-2 mt-8">
-                        <a href="{{ App\Models\Setting::get('facebook') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-facebook-f text-xs"></i></a>
-                        <a href="{{ App\Models\Setting::get('instagram') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-instagram text-xs"></i></a>
-                        <a href="{{ App\Models\Setting::get('twitter') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-twitter text-xs"></i></a>
-                        <a href="{{ App\Models\Setting::get('youtube') }}" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-youtube text-xs"></i></a>
-                        <a href="#" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-pinterest-p text-xs"></i></a>
+                        <a href="https://www.facebook.com/srjheattexchangersindia/" target="_blank" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all"><i class="fab fa-facebook-f text-xs"></i></a>
+                        <a href="https://www.instagram.com/srj_heatt_exchangers_india/" target="_blank" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                        <a href="https://x.com/SRJ_Heatt_India" target="_blank" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 hover:border-sky-500 transition-all"><i class="fa-brands fa-x-twitter text-xs"></i></a>
+                        <a href="https://www.youtube.com/@SRJHeattExchangersIndia" target="_blank" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all"><i class="fab fa-youtube text-xs"></i></a>
+                        <a href="https://in.pinterest.com/SRJ_Heatt_India/" target="_blank" class="w-8 h-8 rounded border border-white/20 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all"><i class="fab fa-pinterest-p text-xs"></i></a>
                     </div>
                 </div>
             </div>

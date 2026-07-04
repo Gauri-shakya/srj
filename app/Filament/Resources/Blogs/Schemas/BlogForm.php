@@ -35,6 +35,10 @@ class BlogForm
                             ->directory('blogs')
                             ->columnSpanFull(),
                         
+                        TextInput::make('alt_text')
+                            ->label('Image Alt Text')
+                            ->columnSpanFull(),
+                        
                         Textarea::make('short_description')
                             ->columnSpanFull()
                             ->maxLength(1000),

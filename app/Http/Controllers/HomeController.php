@@ -50,7 +50,15 @@ class HomeController extends Controller
         $certificates = \App\Models\AwardAndAchievement::where('is_active', true)
             ->orderBy('sort_order')
             ->get();
+            
+        $homeFaqs = \App\Models\HomeFaq::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
+            
+        $clients = \App\Models\Client::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
         
-        return view('frontend.home', compact('sliders', 'services', 'testimonials', 'certificates'));
+        return view('frontend.home', compact('sliders', 'services', 'testimonials', 'certificates', 'homeFaqs', 'clients'));
     }
 }

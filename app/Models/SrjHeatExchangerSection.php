@@ -13,6 +13,7 @@ class SrjHeatExchangerSection extends Model
         'title',
         'content',
         'image',
+        'alt_text',
         'is_active',
         'sort_order',
     ];

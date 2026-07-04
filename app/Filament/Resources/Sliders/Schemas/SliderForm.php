@@ -21,8 +21,9 @@ class SliderForm
                 FileUpload::make('image')
                     ->image()
                     ->required(),
-                TextInput::make('btn_text'),
-                TextInput::make('btn_link'),
+                TextInput::make('alt_text')
+                    ->label('Image Alt Text')
+                    ->placeholder('e.g., Industrial Plate Heat Exchanger'),
                 TextInput::make('order')
                     ->required()
                     ->numeric()

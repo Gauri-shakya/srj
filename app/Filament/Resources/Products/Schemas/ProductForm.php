@@ -38,6 +38,9 @@ class ProductForm
                 FileUpload::make('image')
                     ->image()
                     ->directory('products'),
+                TextInput::make('alt_text')
+                    ->label('Image Alt Text')
+                    ->placeholder('e.g., SRJ Plate Heat Exchanger'),
                 Textarea::make('description')
                     ->columnSpanFull(),
                 RichEditor::make('content')

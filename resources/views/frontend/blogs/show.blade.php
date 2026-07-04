@@ -31,7 +31,7 @@
                     
                     <!-- Blog Image -->
                     <div class="rounded-lg overflow-hidden mb-8 relative">
-                        <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=1200' }}" alt="{{ $blog->title }}" class="w-full h-auto object-cover max-h-[500px]">
+                        <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=1200' }}" alt="{{ $blog->alt_text ?? $blog->title }}" loading="lazy" class="w-full h-auto object-cover max-h-[500px]">
                         <div class="absolute top-4 left-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded shadow flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

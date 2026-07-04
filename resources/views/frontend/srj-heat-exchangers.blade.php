@@ -55,7 +55,7 @@
                                 
                                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-100 p-4 sm:p-8">
                                     @if($section->image)
-                                        <img src="{{ Storage::url($section->image) }}" alt="{{ $section->title }}" class="w-full h-auto object-contain max-h-[500px] transition-transform duration-700 group-hover:scale-105">
+                                        <img src="{{ Storage::url($section->image) }}" alt="{{ $section->alt_text ?? $section->title }}" loading="lazy" class="w-full h-auto object-contain max-h-[500px] transition-transform duration-700 group-hover:scale-105">
                                     @else
                                         <div class="w-full h-64 bg-slate-100 flex items-center justify-center text-slate-400">
                                             <i class="fas fa-image text-4xl"></i>

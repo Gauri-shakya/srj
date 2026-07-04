@@ -13,6 +13,7 @@ class Blog extends Model
         'title',
         'slug',
         'image',
+        'alt_text',
         'short_description',
         'long_description',
         'is_active',

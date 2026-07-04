@@ -6,16 +6,12 @@
 <!-- Product Header -->
 <div class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-black">
     <!-- Background Image -->
-    @if($brand->image)
-        <div class="absolute inset-0 bg-[url('{{ asset('storage/' . $brand->image) }}')] bg-cover bg-center bg-fixed"></div>
-    @else
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-fixed"></div>
-    @endif
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-fixed"></div>
     
     <!-- Dark Overlay so text is clear -->
     <div class="absolute inset-0 bg-black/70 z-0"></div>
     
-    <div class="container mx-auto px-4 lg:px-8 relative z-10" data-aos="fade-up">
+    <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8 relative z-10" data-aos="fade-up">
         <div class="flex flex-col items-start gap-3">
             <!-- Left Side: Title -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg m-0 leading-tight max-w-4xl">
@@ -36,7 +32,7 @@
 
 <!-- Product Details Section -->
 <section class="py-20 bg-white relative">
-    <div class="container mx-auto px-4 lg:px-8">
+    <div class="max-w-[1400px] w-full mx-auto px-4 lg:px-8">
         
         @php
             $allBrands = \App\Models\ReplacementBrand::where('is_active', true)->orderBy('order')->get();
@@ -99,7 +95,7 @@
                 <div class="relative z-10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(10,22,40,0.08)] bg-white border border-slate-100 group">
                     <div class="absolute inset-0 bg-[#0a1628]/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     @if($brand->image)
-                        <img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->name }}" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <img src="{{ asset('storage/' . $brand->image) }}" alt="{{ $brand->alt_text ?? $brand->name }}" loading="lazy" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
                     @else
                         <div class="w-full h-[400px] bg-slate-50 flex items-center justify-center text-slate-300 rounded-xl">
                             <i class="fas fa-image text-5xl"></i>

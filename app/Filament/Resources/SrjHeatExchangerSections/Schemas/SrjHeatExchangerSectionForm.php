@@ -30,6 +30,9 @@ class SrjHeatExchangerSectionForm
                     ->directory('srj-sections')
                     ->imageEditor()
                     ->columnSpanFull(),
+                \Filament\Forms\Components\TextInput::make('alt_text')
+                    ->label('Image Alt Text')
+                    ->columnSpanFull(),
                 TextInput::make('sort_order')
                     ->numeric()
                     ->default(0)

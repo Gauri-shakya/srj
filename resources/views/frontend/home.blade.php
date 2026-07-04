@@ -8,16 +8,18 @@
         <div class="swiper-wrapper">
             @foreach($sliders as $slider)
             <div class="swiper-slide relative overflow-hidden">
-                <div class="hero-slide-bg" style="background-image: url('{{ $slider->image === 'sliders/default.jpg' ? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000' : ($slider->image === 'sliders/default2.jpg' ? 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=2000' : asset('storage/'.$slider->image)) }}')">
-                </div>
+                <img src="{{ $slider->image === 'sliders/default.jpg' ? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000' : ($slider->image === 'sliders/default2.jpg' ? 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=2000' : asset('storage/'.$slider->image)) }}"
+                     alt="{{ $slider->alt_text ?? $slider->title }}"
+                     loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                     class="hero-slide-bg absolute inset-0 w-full h-full object-cover">
                 
                 <!-- Premium Gradient Overlay -->
                 <div class="hero-overlay"></div>
                 
                 <!-- Slide Content -->
-                <div class="container hero-content-wrapper absolute inset-0 flex items-center z-10 px-4 md:px-6 lg:px-12">
-                    <div class="hero-content max-w-4xl mt-10 md:mt-16 w-full">
-                        <div class="hero-badge inline-flex items-center gap-2 md:gap-3 glass text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs tracking-[0.2em] font-bold uppercase shadow-xl mb-6 md:mb-8 border border-white/20">
+                <div class="container hero-content-wrapper absolute inset-0 flex items-center z-10 px-4 md:px-6 lg:px-12 pb-24 md:pb-32">
+                    <div class="hero-content max-w-4xl mt-10 md:mt-12 w-full">
+                        <div class="hero-badge inline-flex items-center gap-2 md:gap-3 glass text-red-600 px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs tracking-[0.2em] font-bold uppercase shadow-xl mb-6 md:mb-8 border border-white/20">
                             <span class="relative flex h-3 w-3">
                               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                               <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
@@ -34,11 +36,10 @@
                             </p>
                         </div>
                         
-                        @if($slider->btn_text)
                         <div class="hero-btn flex flex-wrap gap-4 items-center pl-4 md:pl-8 mt-2 xl:mb-8 md:mt-4">
-                            <a href="{{ $slider->btn_link }}" class="group relative inline-flex items-center justify-center px-6 md:px-8 py-2.5 md:py-3 text-xs md:text-sm tracking-widest uppercase font-bold text-white transition-all duration-300 bg-red-600 rounded-full overflow-hidden shadow-lg hover:shadow-red-600/50 hover:-translate-y-0.5 border border-red-500">
+                            <a href="{{ route('contact') }}" class="group relative inline-flex items-center justify-center px-6 md:px-8 py-2.5 md:py-3 text-xs md:text-sm tracking-widest uppercase font-bold text-white transition-all duration-300 bg-red-600 rounded-full overflow-hidden shadow-lg hover:shadow-red-600/50 hover:-translate-y-0.5 border border-red-500">
                                 <span class="relative flex items-center gap-2">
-                                    {{ $slider->btn_text }}
+                                    Contact Us
                                     <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
                                 </span>
                             </a>
@@ -46,7 +47,6 @@
                                 Explore More
                             </a>
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -341,86 +341,60 @@
                     <span class="text-red-600">Questions</span>
                 </h2>
                 
-                <div class="space-y-3">
-                    <!-- FAQ Item 1 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">1. What is a plate heat exchanger?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            A plate heat exchanger is a type of heat exchanger that uses metal plates to transfer heat between two fluids. This has a major advantage over a conventional heat exchanger in that the fluids are exposed to a much larger surface area because the fluids spread out over the plates.
-                        </div>
-                    </details>
-                    
-                    <!-- FAQ Item 2 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">2. What is the plate heat exchanger working principle?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            The working principle involves two fluids passing through alternating channels formed by corrugated plates. Heat is transferred from the hot fluid to the cold fluid through the thin metal plates without the fluids ever mixing.
-                        </div>
-                    </details>
-
-                    <!-- FAQ Item 3 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">3. Which Industries use plate heat exchangers?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            They are widely used in HVAC, chemical processing, food and beverage, dairy, marine, power generation, and pharmaceutical industries due to their high efficiency and compact size.
-                        </div>
-                    </details>
-
-                    <!-- FAQ Item 4 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">4. Are you plate heat exchanger manufacturers in India?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            Yes, SRJ Heat Exchangers is a leading manufacturer of premium quality plate heat exchangers and replacement parts based in India with our own advanced manufacturing facility.
-                        </div>
-                    </details>
-
-                    <!-- FAQ Item 5 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">5. Do you supply plate heat exchanger gasket and replacement plates?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            Yes, we manufacture and supply OEM-quality replacement gaskets and plates compatible with all major global brands like Alfa Laval, GEA, Tranter, and more.
-                        </div>
-                    </details>
-
-                    <!-- FAQ Item 6 -->
-                    <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow">
-                        <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
-                            <span class="text-sm md:text-base">6. How can I get plate heat exchanger price and quotation?</span>
-                            <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </span>
-                        </summary>
-                        <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white">
-                            You can easily request a quote by clicking the "Get a Quote" button on our website, filling out the contact form, or directly calling our sales team with your specific requirements.
-                        </div>
-                    </details>
-
+                <div class="space-y-3" id="faq-container">
+                    @forelse($homeFaqs as $index => $faq)
+                        <details class="group border border-slate-200 rounded-xl bg-slate-50 overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm hover:shadow-md transition-shadow {{ $index >= 6 ? 'hidden extra-faq' : '' }}">
+                            <summary class="flex items-center justify-between cursor-pointer p-5 font-bold text-slate-700 hover:text-red-600 transition-colors">
+                                <span class="text-sm md:text-base">{{ $index + 1 }}. {{ $faq->question }}</span>
+                                <span class="transition-transform duration-300 group-open:-rotate-180 text-slate-400 group-hover:text-red-600">
+                                    <i class="fas fa-chevron-down text-sm"></i>
+                                </span>
+                            </summary>
+                            <div class="p-5 pt-0 text-slate-500 text-sm leading-relaxed border-t border-slate-100 bg-white prose-p:my-0 prose-ul:my-0">
+                                {!! $faq->answer !!}
+                            </div>
+                        </details>
+                    @empty
+                        <p class="text-slate-500">No FAQs available yet.</p>
+                    @endforelse
                 </div>
+
+                @if(isset($homeFaqs) && $homeFaqs->count() > 6)
+                    <div class="mt-6 text-center">
+                        <button id="load-more-faqs" class="inline-flex items-center justify-center w-12 h-12 bg-red-600 text-white rounded-full shadow-lg hover:bg-[#0a1628] hover:-translate-y-1 transition-all duration-300" title="Show More FAQs">
+                            <i class="fas fa-plus text-xl"></i>
+                        </button>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const loadMoreBtn = document.getElementById('load-more-faqs');
+                            const extraFaqs = document.querySelectorAll('.extra-faq');
+                            let isExpanded = false;
+
+                            if(loadMoreBtn) {
+                                loadMoreBtn.addEventListener('click', function() {
+                                    isExpanded = !isExpanded;
+                                    extraFaqs.forEach(faq => {
+                                        if(isExpanded) {
+                                            faq.classList.remove('hidden');
+                                        } else {
+                                            faq.classList.add('hidden');
+                                        }
+                                    });
+                                    
+                                    if(isExpanded) {
+                                        loadMoreBtn.innerHTML = '<i class="fas fa-minus text-xl"></i>';
+                                        loadMoreBtn.setAttribute('title', 'Show Less FAQs');
+                                    } else {
+                                        loadMoreBtn.innerHTML = '<i class="fas fa-plus text-xl"></i>';
+                                        loadMoreBtn.setAttribute('title', 'Show More FAQs');
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                @endif
             </div>
             
         </div>
@@ -605,6 +579,39 @@
             },
         }
     });
+    const clientSwiper = new Swiper('.clientSwiper', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.client-pagination',
+            clickable: true,
+            bulletClass: 'swiper-pagination-bullet !bg-slate-300 !w-2.5 !h-2.5 !opacity-100',
+            bulletActiveClass: 'swiper-pagination-bullet-active !bg-red-600 !w-3 !h-3',
+        },
+        navigation: {
+            nextEl: '.client-next',
+            prevEl: '.client-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            },
+        }
+    });
 </script>
 @endpush
 
@@ -655,6 +662,58 @@
             <!-- Navigation -->
             <div class="swiper-button-prev cert-prev !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -left-4 font-black transition-colors"></div>
             <div class="swiper-button-next cert-next !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -right-4 font-black transition-colors"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Clients Section -->
+<section class="py-20 bg-slate-50 relative overflow-hidden border-t border-slate-200">
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black text-[#0a1628] mb-4">
+                Our Plate Heat Exchanger <span class="text-red-600">Clients</span>
+            </h2>
+            <p class="text-slate-600 max-w-3xl mx-auto">At SRJ Heat Exchangers India Pvt. Ltd., we work with leading industrial brands as trusted plate heat exchanger manufacturers and plate heat exchanger supplier in India delivering reliable plate heat exchangers, plate heat exchanger gasket solutions, and efficient heat transfer systems for industrial applications.</p>
+        </div>
+        
+        <div class="relative px-2 sm:px-12 max-w-7xl mx-auto">
+            <div class="swiper clientSwiper !pb-14" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper items-center">
+                    @if(isset($clients) && $clients->count() > 0)
+                        @foreach($clients as $client)
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-300 flex items-center justify-center h-32 hover:shadow-[0_10px_30px_rgba(220,38,38,0.1)] hover:border-red-100 group">
+                                <img src="{{ asset('storage/' . $client->image) }}" alt="{{ $client->alt_text ?? $client->name }}" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-all duration-500">
+                            </div>
+                        </div>
+                        @endforeach
+                    @else
+                        @php
+                            $placeholderClients = [
+                                ['name' => 'Mother Dairy', 'img' => 'https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Mother_Dairy_logo.svg/220px-Mother_Dairy_logo.svg.png'],
+                                ['name' => 'Pepsico', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/PepsiCo_logo.svg/200px-PepsiCo_logo.svg.png'],
+                                ['name' => 'Coca Cola', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/200px-Coca-Cola_logo.svg.png'],
+                                ['name' => 'Tata Chemicals', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tata_logo.svg/200px-Tata_logo.svg.png'],
+                                ['name' => 'Aditya Birla', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Aditya_Birla_Group_Logo.svg/200px-Aditya_Birla_Group_Logo.svg.png'],
+                                ['name' => 'Nestle', 'img' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Nestl%C3%A9_logo.svg/200px-Nestl%C3%A9_logo.svg.png'],
+                            ];
+                        @endphp
+                        @foreach($placeholderClients as $client)
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-300 flex items-center justify-center h-32 hover:shadow-[0_10px_30px_rgba(220,38,38,0.1)] hover:border-red-100 group">
+                                <img src="{{ $client['img'] }}" alt="{{ $client['name'] }}" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-all duration-500">
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination client-pagination flex items-center justify-center gap-1.5"></div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="swiper-button-prev client-prev !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -left-4 font-black transition-colors"></div>
+            <div class="swiper-button-next client-next !text-[#0a1628] hover:!text-red-600 after:!text-xl hidden sm:flex -right-4 font-black transition-colors"></div>
         </div>
     </div>
 </section>

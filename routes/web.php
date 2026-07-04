@@ -10,6 +10,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Dummy routes for links
 Route::get('/about', fn() => view('frontend.about'))->name('about');
 Route::get('/contact', fn() => view('frontend.contact'))->name('contact');
+Route::get('/privacy-policy', fn() => view('frontend.privacy_policy'))->name('privacy.policy');
+Route::get('/cookies-policy', fn() => view('frontend.cookies_policy'))->name('cookies.policy');
+Route::get('/terms-and-conditions', fn() => view('frontend.terms_conditions'))->name('terms.conditions');
 Route::post('/contact', function (\Illuminate\Http\Request $request) {
     $validated = $request->validate([
         'name' => 'required|string|max:255',

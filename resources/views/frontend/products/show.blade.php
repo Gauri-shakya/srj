@@ -70,7 +70,7 @@
                 <div class="relative z-10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(10,22,40,0.08)] bg-white border border-slate-100 group">
                     <div class="absolute inset-0 bg-[#0a1628]/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->alt_text ?? $product->name }}" class="w-full h-auto min-h-[350px] object-cover transform group-hover:scale-110 transition-transform duration-700">
                     @else
                         <div class="w-full h-[400px] bg-slate-50 flex items-center justify-center text-slate-300 rounded-xl">
                             <i class="fas fa-image text-5xl"></i>

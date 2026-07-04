@@ -19,10 +19,6 @@ class SlidersTable
                 TextColumn::make('title')
                     ->searchable(),
                 ImageColumn::make('image'),
-                TextColumn::make('btn_text')
-                    ->searchable(),
-                TextColumn::make('btn_link')
-                    ->searchable(),
                 TextColumn::make('order')
                     ->numeric()
                     ->sortable(),
@@ -41,7 +37,8 @@ class SlidersTable
                 //
             ])
             ->recordActions([
-                EditAction::make()->iconButton()->iconButton(),
+                EditAction::make()->iconButton(),
+                \Filament\Actions\DeleteAction::make()->iconButton(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

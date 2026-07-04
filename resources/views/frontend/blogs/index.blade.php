@@ -27,7 +27,7 @@
                     <!-- Image -->
                     <div class="relative h-60 overflow-hidden group">
                         <a href="{{ route('blog.show', $blog->slug) }}" class="block w-full h-full">
-                            <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $blog->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $blog->alt_text ?? $blog->title }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </a>
                         <div class="absolute top-4 right-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded shadow">
                             BLOG
