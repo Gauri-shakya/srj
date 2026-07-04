@@ -54,11 +54,15 @@ class QuoteResource extends Resource
         ];
     }
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => ListQuotes::route('/'),
-            'create' => CreateQuote::route('/create'),
             'view' => ViewQuote::route('/{record}'),
             'edit' => EditQuote::route('/{record}/edit'),
         ];

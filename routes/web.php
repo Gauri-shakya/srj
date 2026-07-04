@@ -10,7 +10,17 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Dummy routes for links
 Route::get('/about', fn() => view('frontend.about'))->name('about');
 Route::get('/contact', fn() => view('frontend.contact'))->name('contact');
-Route::post('/contact', fn() => back()->with('success', 'Thank you! Your message has been sent successfully.'))->name('contact.store');
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|string|max:255',
+        'subject' => 'required|string|max:255',
+        'message' => 'nullable|string',
+    ]);
+    \App\Models\ContactLead::create($validated);
+    return back()->with('success', 'Thank you! Your message has been sent successfully.');
+})->name('contact.store');
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::get('/srj-heat-exchangers', [SrjHeatExchangersController::class, 'index'])->name('srj-heat-exchangers');
 Route::get('/products', fn() => 'Products')->name('products.index');

@@ -46,6 +46,16 @@
                     </div>
                 @endif
                 
+                @if($errors->any())
+                    <div class="bg-red-50 text-red-700 p-4 rounded-lg mb-6 border border-red-200">
+                        <ul class="list-disc list-inside text-sm">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
                 <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                     @csrf
                     <!-- Name -->
